@@ -193,11 +193,11 @@ public class Foo {
 运行时，crane4j 将根据指定属性值是否等于期望值确认是否要应用对应的操作：
 
 ~~~java
-@ConditionOnProperty(property = "key", value "user") // 仅当 key 属性为 user 时才应用操作
+@ConditionOnProperty(property = "key", value = "user") // 仅当 key 属性为 user 时才应用操作
 @Assemble(key = "key", container = "foo")
 public class Foo {
     
-    @ConditionOnProperty(value "user") // 仅当 name 属性为 user 时才应用操作
+    @ConditionOnProperty(value = "user") // 仅当 name 属性为 user 时才应用操作
     @Assemble(container = "foo")
     private String name;
     
@@ -248,11 +248,11 @@ public class Foo {
 运行时，crane4j 将根据指定属性值是否为空确认是否要应用对应的操作：
 
 ~~~java
-@ConditionOnPropertyNotEmpty(property = "keys", value "user") // 仅当 keys 属性不为空才应用操作
+@ConditionOnPropertyNotEmpty(property = "keys", value = "user") // 仅当 keys 属性不为空才应用操作
 @Assemble(key = "keys", container = "foo")
 public class Foo {
     
-    @ConditionOnPropertyNotNull(value "user") // 仅当 name 属性不为null时才应用操作
+    @ConditionOnPropertyNotNull(value = "user") // 仅当 name 属性不为null时才应用操作
     @Assemble(container = "foo")
     private String name;
     
@@ -261,6 +261,12 @@ public class Foo {
 ~~~
 
 其中，`@ConditionOnPropertyNotEmpty` 可以判断数组、集合或字符串是否为空，而 `@ConditionOnPropertyNotNull` 只能判断是否为 `null`。
+
+:::tip
+
+反射获取字段值会带来额外的性能开销，所以如果此类判断较多，那么比起交给 crane4j，我们更推荐直接在配置文件中设置 `crane4j.ignore-null-key-when-assembling: true` 全局过滤掉 key 值为空的操作，或者在你的数据源（比如查询方法或本地缓存）层面进行空值过滤。
+
+:::
 
 ### 2.4.当填充对象为指定类型
 

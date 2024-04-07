@@ -325,7 +325,7 @@ public class Foo {
 }
 ```
 
-或者使用 SpEL 表达式：：
+或者使用 SpEL 表达式：
 
 ```java
 public class Foo {

@@ -47,6 +47,7 @@ public List<Foo> annotatedMethod(List<String> args) {
 :::tip
 
 - 关于 `@ContainerMethod` 的使用方法，请参见 [方法数据源容器](./../basic/container/method_container.md) 一节。
+- 当你使用方法数据源容器时，如果已经基于 `SpringCache` 或 `JetCache` 做了方法级缓存，那么当方法被适配为数据源容器后它们的缓存依然是生效的，此时你可以不必再加一级 crane4j 的缓存了。
 
 :::
 

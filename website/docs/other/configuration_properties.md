@@ -128,7 +128,7 @@ crane4j:
 
 ~~~yml
 crane4j:
- # 操作配置预解析
+ # 当 key 值为 null 时忽略此操作
  ignore-null-key-when-assembling: true
 ~~~
 

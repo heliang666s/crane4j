@@ -41,7 +41,7 @@ Container<String> customerContainer = LambdaContainer.forLambda(
 );
 ```
 
-### 2.1.使用
+### 2.1.使用一对多装配处理器
 
 现在，我们可以借助一对多装配处理器，批量提取数据源对象的属性，并将其赋值给目标对象的指定属性：
 
@@ -105,7 +105,7 @@ private Set<Integer> idList; // 键字段为集合，例如：[a, b, c]
 private Integer[] idArray; // 键字段为数组，例如：[a, b, c]
 ```
 
-### 3.1.使用
+### 3.1.使用多对多装配处理器
 
 针对多个键字段映射，需要使用特定的装配操作处理器 `ManyToManyAssembleOperationHandler`：
 
