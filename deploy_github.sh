@@ -4,7 +4,7 @@ read commit_message
 # 构建 github 文档
 echo '开始构建github文档......'
 cd website
-docs:build
+npm run docs:build
 echo '文档构建完毕......'
 cd ..
 git add .
