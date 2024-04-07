@@ -12,9 +12,9 @@ git checkout -b dev-doc
 echo '重新建立dev-doc分支......'
 git checkout dev-doc
 # 修改config.js文件中的base路径
-sed -i "s/base: '\/crane4j\//base: '\/crane4j-doc\//" ./docs/.vuepress/config.js
+sed -i "s/base: '\/crane4j\//base: '\/crane4j-doc\//" ./docs/.vitepress/config.mts
 echo '修改base路径为 "/crane-doc/"......'
-docs:build
+npm run docs:build
 echo '文档构建完毕......'
 cd ..
 git add .
