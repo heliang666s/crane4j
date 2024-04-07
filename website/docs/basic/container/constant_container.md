@@ -65,7 +65,7 @@ public static class FooConstant2 {
 
 ## 3.批量扫描
 
-在 Spring 环境中，你可以通过**配置文件**或者 **`@EnableCrane4j` 注解**配置扫描路径，批量的扫描并注册常量类。
+在 Spring 环境中，你可以通过**配置文件**或者**注解**配置扫描路径，批量的扫描并注册常量类。
 
 **通过配置文件**
 
@@ -79,21 +79,7 @@ crane4j:
 
 **通过注解配置**
 
-在 2.1.0 及以上版本，你可以在 Spring 的启动类或配置类上，通过注解配置要扫描的常量包路径：
-
-~~~java
-@EnableCrane4j(
-    constantPackages = "com.example.demo", // 要扫描的常量包路径
-)
-@SpringBootApplication
-public class Demo3Application implements ApplicationRunner {
-    public static void main(String[] args) {
-        SpringApplication.run(Demo3Application.class, args);
-    }
-}
-~~~
-
-你也直接可以使用 `@ContainerConstantScan` 注解进行更细粒度的配置，效果与 `@EnableCrane4j` 一致：
+在 2.1.0 及以上版本，你可以在 Spring 的启动类或配置类上，通过 `@ContainerConstantScan` 注解配置要扫描的常量包路径：
 
 ~~~java
 @ContainerConstantScan(

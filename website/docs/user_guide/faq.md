@@ -102,7 +102,7 @@
 
 ## 容器可以做一些自定义的初始化/销毁操作吗？
 
-实现 `Container.Lifecycle` 接口即可，具体参见 [容器的生命周期](./../advanced/container_lifecycle.md)。
+实现 `Container.Lifecycle` 接口即可，具体参见 [容器的生命周期](./../advanced/callback_of_component.md)。
 
 ## 可以支持同时根据多个 key 字段填充数据吗？
 
@@ -153,4 +153,4 @@
 你可以通过在手动或自动装配时指定使用异步执行器来实现多线程填充的效果，具体参见：
 
 - [基本概念-操作执行器](./basic_concept)；
-- [触发填充操作-指定执行器](./basic/trigger_operation)；
+- [触发填充操作-指定执行器](./../basic/trigger_operation.md)；

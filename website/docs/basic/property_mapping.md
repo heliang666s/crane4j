@@ -38,6 +38,19 @@ public class StudentVO {
 + 将`Student.studentName`映射到`StudentVO.name`；
 + 将`Student.studentClassName`映射到`StudentVO.className`。
 
+在 2.7.0 及以上版本，你也可以使用 `prop` 属性简化配置：
+
+```java
+public class StudentVO {
+    @Assemble(
+        container = "student",
+        prop = { "studentName:name", "studentClassName:className" } // student.name -> studentVO.name
+    )
+    private Integer id;
+    private String name;
+}
+```
+
 ### 1.1.同名属性
 
 另外，如果 `src` 和 `ref` 指定的字段名称相同，可以直接在`value`中同时指定。比如：
@@ -45,8 +58,21 @@ public class StudentVO {
 ```java
 public class StudentVO {
     @Assemble(
+            container = "student",
+            props = @Mapping("name") // student.name -> studentVO.name
+    )
+    private Integer id;
+    private String name;
+}
+```
+
+在 2.7.0 及以上版本，你也可以使用 `prop` 属性简化配置：
+
+```java
+public class StudentVO {
+    @Assemble(
         container = "student", 
-        props = @Mapping("name") // student.name -> studentVO.name
+        prop = "name" // student.name -> studentVO.name
     )
     private Integer id;
     private String name;
@@ -76,6 +102,19 @@ public class StudentVO {
 
 这种配置通常适用于对象的组装，或者当数据源对象本身就是某个字典值或枚举值的情况。
 
+在 2.7.0 及以上版本，你也可以使用 `prop` 属性简化配置：
+
+```java
+public class StudentVO {
+    @Assemble(
+        container = "student",
+        prop = ":student" // student -> studentVO.student
+    )
+    private Integer id;
+    private Student student;
+}
+```
+
 ## 3.属性到键
 
 当在 `@Mapping` 注解中不指定引用字段 `ref` 时，表示直接将 `src` 指向的属性值映射到 `key` 字段上。比如：
@@ -94,6 +133,18 @@ public class StudentVO {
 
 这种配置适用于将字典值或枚举值映射回目标对象的字段上。
 
+在 2.7.0 及以上版本，你也可以使用 `prop` 属性简化配置：
+
+```java
+public class StudentVO {
+    @Assemble(
+        container = "gender",
+        prop = "name:"  // gender.name -> studentVO.gender
+    )
+    private String gender;
+}
+```
+
 ## 4.对象到键
 
 当在 `@Mapping` 注解中不指定引用字段 `ref` ，且不指定 `src` 时，表示整个数据源对象映射到目标对象的 `key` 字段上。比如：
@@ -101,11 +152,11 @@ public class StudentVO {
 ```java
 public class StudentVO {
     @Assemble(container = "gender") // 假设通过 gender 获得的数据为 Map<String, String> 格式，比如 {key = "male", value = "男"}
-    private String sexgender
+    private String gender; // "male" -> "男"
 }
 ```
 
-这种情况比较罕见。
+这种配置一般用于将属性的字典 ID 替换为对应字典值。
 
 ## 5.批量映射
 

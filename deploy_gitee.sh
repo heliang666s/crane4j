@@ -14,7 +14,7 @@ git checkout dev-doc
 # 修改config.js文件中的base路径
 sed -i "s/base: '\/crane4j\//base: '\/crane4j-doc\//" ./docs/.vuepress/config.js
 echo '修改base路径为 "/crane-doc/"......'
-npm run build
+docs:build
 echo '文档构建完毕......'
 cd ..
 git add .

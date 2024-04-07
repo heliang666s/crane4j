@@ -6,7 +6,7 @@
 
 # Crane4j
 
-强大又好用的数据填充框架，用少量注解搞定一切“根据 A 的 key 值拿到 B，再把 B 的属性映射到 A”的需求。
+一个简单易用的数据映射框架，通过简单的注解配置快速根据外键/编码值填充相关字段，支持字典，枚举，方法等多种数据源。 
 
 ![image-20230810233647099](http://img.xiajibagao.top/image-20230810233647099.png)
 
@@ -40,63 +40,9 @@
 </dependency>
 ~~~
 
-**启用框架**
-
-通过在启动类/配置类上添加 `@EnableCrane4j` 即可开启自动配置，在此处也可以直接配置枚举和常量类的扫描路径：
-
-~~~java
-@EnableCrane4j(
-    constantPackages = "com.example.demo", // 描路常量类
-    enumPackages = "com.example.demo"  // 扫描枚举类
-)
-@SpringBootApplicationpublic 
-public class Application {   
-    public static void main(String[] args) {  
-        SpringApplication.run(Application.class, args); 
-    }
-}
-~~~
-
-**配置数据源**
-
-`crane4j` 可以将**方法、枚举、常量、表达式、各种 ORM 框架甚至待填充对象本身都作为数据源**，这里以方法、枚举和常量三者为例：
-
-~~~java
-@Component
-public void OperationDataSource {
-    
-    // 1、直接将实例方法作为数据源 "method"
-    @ContainerMethod(namespace = "method", resultType = Foo.class)
-    public List<Foo> getFooList(Set<Integer>ids) {
-        return ids.stream()
-            .map(id -> new Foo(id).setName("foo" + id))
-            .collect(Collectors.toList());
-    }
-
-    // 2、将被扫描的枚举类作为数据源 "enum"
-    @ContainerEnum(namespace = "enum", key = "code")
-    @Getter
-    @RequiredArgsConstructor
-    public enum Gender {
-        MALE(1, "男性"),
-        FEMALE(0, "女性");
-        private final Integer code;
-        private final String name;
-    }
-
-    // 3、将被扫描的常量类作为数据源 "constant"
-    @ContainerConstant(namespace = "constant", reverse = true)
-    public static final class Constant {
-        public static final String A = "1";
-        public static final String B = "2";
-        public static final String C = "3";
-    }
-}
-~~~
-
 **声明填充操作**
 
-通过在字段添加注解即可基于上文配置的数据源声明填充操作，支持一对一、一对多甚至多对多的属性映射：
+通过在类、字段或 getter 方法上添加注解，即可基于上文配置的数据源声明填充操作，支持一对一、一对多甚至多对多的属性映射：
 
 ~~~java
 @Data
@@ -104,48 +50,62 @@ public void OperationDataSource {
 @RequiredArgsConstructor
 public static class Foo {
 
-    // 1、根据id从方法中获取对应的对象，然后将其name映射到当前的name中
+    // 根据从 getter 方法获取的值，从指定的数据源中获取对应的对象，然后将其name映射到当前的name中
     @Assemble(container = "method", props = @Mapping("name"))
-    private final Integer id;
+    public Integer getId() {
+        // return value
+    }
     private String name;
 
-    // 2、将自己的name属性映射到fooName
-    @Assemble(props = @Mapping(src = "name", ref = "fooName"))
-    private String fooName;
-
-    // 3、根据gender获得对应的枚举对象，然后将其name属性映射到当前的genderName中
-    @Assemble(
-        container = "enum", props = @Mapping(src = "name", ref = "genderName")
+    // 根据 gender 获得对应的枚举对象，然后将其 name 属性映射到 genderName 中
+    @AssembleEnum(
+        type = Gender.class, 
+        enums = @ContainerEnum(key = "code"), 
+        props = @Mapping(ref = "genderName")
     )
     private Integer gender;
     private String genderName;
-
-    // 4、根据key集合从常量中批量获得对应的值，再将其批量映射到当前的value中
-    @Assemble(
-        container = "constant", props = @Mapping(ref = "values"),
-        handlerType = ManyToManyAssembleOperationHandler.class
+    
+    // 根据部门 ID 查询员工列表，并取列表中员工对象的名称映射到 empNames
+    @AssembleMethod(
+        handlerType = OneToManyAssembleHandler.class,
+        targetType = empService.class,
+        method = @ContainerMethod(bindMethod = "listByDeptId", resultType = Emp.class, resultKey = "id"),
+        props = @Mapping(src = "name", ref = "empNames")
     )
-    private Set<String> keys;
-    private List<String> values;
+    private Integer deptId;
+    private List<String> empNames;
+    
+    // 根据常量值获取对应的常量名称，并映射到 letterName
+    @AssembleConstant(
+        type = LetterConstant.class,
+        constant = @ConstantContainer(onlyPublic = true, reverse = true)
+    )
+    private String letter;
+    private String letterName;
+
+    // 将自己的 name 属性映射到 fooName
+    @Assemble(props = @Mapping(src = "name", ref = "fooName"))
+    private String fooName;
+    
+    // 将 phone 字段根据自定义策略进行处理后回填
+    @AssembleKey(mapper = "phone_number_desensitization")
+    private String phone;
+    
+    // 填充嵌套对象
+    @Disassemble(type = Foo.class)
+    private List<Foo> nestedBeans;
 }
 ~~~
 
 **执行填充**
 
-通过 `OperateTemplate` 即可快速完成填充，也可以在方法上添加 `@AutoOperate` 自动方法的返回值，这里以手动填充为例：
+在方法上添加 `@AutoOperate` 注解即可自动对方法返回值进行填充：
 
 ~~~java
-@Autowired
-public OperateTemplate operateTemplate; // 注入快速填充工具类
-
-public void doOperate() {
-    List<Foo> targets = IntStream.rangeClosed(1, 2)
-        .mapToObj(id -> new Foo(id)
-			.setGender(id & 1)
-			.setKeys(CollectionUtils.newCollection(LinkedHashSet::new, "1", "2", "3"))
-        ).collect(Collectors.toList());
-    // 填充对象
-    operateTemplate.execute(targets);
+@AutoOperate(type = Foo.class)
+public List<Foo> doOperate() {
+    // return something
 }
 ~~~
 

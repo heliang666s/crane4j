@@ -106,7 +106,7 @@ crane4j:
  enable-method-result-auto-operate: false
 ~~~
 
-关于自动填充，参见 [自动填充](./../execute/4.2.自动填充.md) 一节。
+关于自动填充，参见 [触发填充操作](./../basic/trigger_operation.md) 一节。
 
 ## 4.操作配置预解析
 

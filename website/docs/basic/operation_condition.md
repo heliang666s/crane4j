@@ -211,7 +211,7 @@ crane4j 默认会将 `value` 指定的期望值转为实际值的类型后再进
 
 ~~~java
 public class Foo {
-    @ConditionOnProperty(value "123", valueType = Integer.class) // 仅当 id 属性为 123 时才应用操作
+    @ConditionOnProperty(value = "123", valueType = Integer.class) // 仅当 id 属性为 123 时才应用操作
     @Assemble(container = "foo")
     private Integer id;
 }
@@ -224,7 +224,7 @@ public class Foo {
 ~~~java
 public class Foo {
     @ConditionOnProperty(
-        value "123", 
+        value = "123", 
         valueType = Integer.class,
         enableNull = true // 当 id 为空时仍然应用该操作
     )
