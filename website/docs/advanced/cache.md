@@ -185,10 +185,10 @@ public class CustomCacheManager extends AbstractCacheManager {
     
     @Override
     @NonNull
-    protected <K> MapCacheObject<K> doCreateCache(
+    protected <K> CustomCacheObject<K> doCreateCache(
         String name, Long expireTime, TimeUnit timeUnit) {
         // 实现抽象方法，返回一个自定义缓存对象
-        return new MapCacheObject<>(name, new HashMap<>());
+        return new CustomCacheObject<>(name, new HashMap<>());
     }
     
     // 基于 AbstractCacheObject 实现自己的自定义缓存对象

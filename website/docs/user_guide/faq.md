@@ -4,7 +4,7 @@
 
 ## 填充不生效？
 
-- 确认 `@AssembleXXX` 注解正确配置了 `container` 与 `prop` 属性；
+- 确认在 `@AssembleXXX` 注解中正确配置了 `container` 与 `prop` / `props` 属性；
 - 确认操作涉及的属性存在，且都有相应的 `setter` 和 `getter` 方法；
 - 确认目标对象对应的 key 属性值不为空；
 - 确认指定的数据源容器确实有根据 key 值列表返回非空集合；
@@ -26,10 +26,7 @@
 
 ## 如何实现级联填充？
 
-- 在需要按顺序执行的属性上添加 `@Order` 注解（Spring 环境），或直接在 `@AssembleXXX` 注解的 `sort` 属性指定排序值，越小越先执行；
-- 在指定操作顺序的前提下，使用有序的装配执行器 `OrderedBeanOperationExecutor` 完成对目标的填充操作；
-
-具体参见 [顺序填充](./../basic/operation_sort.md)。
+参见 [示例：如何级联填充](./../use_case/example_fill_relations.md) 一节。
 
 ## 如何处理一对多的情况？
 
@@ -62,10 +59,7 @@
 
 ## 怎么忽略掉某些字段不进行填充？
 
-- 使用 `@AssembleXXX` 注解的 `groups` 属性对指定操作进行分组；
-- 在配置了分组的前提下，在使用 `OperateTemplate` 手动填充，或通过被 `@AutoOperate` 注解的方法进行自动填充时，指定仅执行/仅不执行特定分组的操作；
-
-具体参见 [分组填充](./../basic/operation_group.md) 一节。
+参见 [示例：如何在执行时排除某一些操作](./../use_case/example_exclude_operation.md) 一节。
 
 ## 为什么 `@ContainerMethod` 注解不生效？
 
@@ -98,7 +92,7 @@
 
 ## 支持 jdk9+ / springboot3 吗？
 
-在 `jdk11` 与 `jdk17` 和相应版本 SpringBoot 中测试后可以正常运行。
+支持。
 
 ## 容器可以做一些自定义的初始化/销毁操作吗？
 
@@ -106,46 +100,13 @@
 
 ## 可以支持同时根据多个 key 字段填充数据吗？
 
-可以，不过实现方式有点特殊，具体参照 [对象容器](./../basic/container/object_container.md)。
+可以，具体参照 [示例：如何通过多个Key关联数据](./../use_case/example_multi_key.md)。
 
 ## 启动应用报错 “No ServletContext set”
 
 在 2.4.0 及更早的版本中，当你在 web 环境中通过 `@EnableCrane4j` 注解引入框架后，启动项目有可能会出现 “No ServletContext set” 问题，关于该问题的解决方案参见：[在启动类添加 `@EnableCrane4j` 注解后，启动应用报错 “No ServletContext set”](https://github.com/opengoofy/crane4j/issues/126)。
 
-简单的来说分为三种：
-
-- 升级 crane4j 到 2.4.0 或更高版本。
-
-- 在自己的项目中定义一个配置类，去继承 `Crane4jAutoConfiguration`：
-
-    ~~~java
-    /**
-     * 在项目里面另外建一个配置类继承 Crane4jAutoConfiguration
-     * 
-     * @author huangchengxing
-     */
-    @Configuration
-    public class Crane4jConfig extends Crane4jAutoConfiguration {}
-    ~~~
-
-- 在自己的项目中的 `META-INF` 文件夹下通过 SPI 文件引入 crane4j 配置类：
-
-    1. 在 springboot 2.7 及以上版本，你需要在 `spirng` 文件夹下提供一个 `org.springframework.boot.autoconfigure.AutoConfiguration.imports` 文件，里面内容如下：
-
-        ~~~
-        cn.crane4j.spring.boot.config.Crane4jAutoConfiguration
-        cn.crane4j.spring.boot.config.Crane4jJacksonConfiguration
-        cn.crane4j.spring.boot.config.Crane4jMybatisPlusAutoConfiguration
-        ~~~
-
-    2. 在 springboot 2.7 以下版本，你需要提供一个 `spring.factories` 文件，里面内容如下：
-
-        ~~~
-        org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-          cn.crane4j.spring.boot.config.Crane4jAutoConfiguration,\
-          cn.crane4j.spring.boot.config.Crane4jJacksonConfiguration,\
-          cn.crane4j.spring.boot.config.Crane4jMybatisPlusAutoConfiguration
-        ~~~
+你可以直接升级 crane4j 到 2.5.0 或更高版本解决这个问题。
 
 
 ## 可以多线程填充吗？

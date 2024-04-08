@@ -14,7 +14,7 @@ public Emp {
     @Assemble(
       	container = "dept", 
       	prop = { "name:firstDeptName" },
-      	order = 3 // 指定顺序
+      	sort = 3 // 指定顺序
     )
   	private Integer firstIdDeptId;
   	private String firstDeptName;
@@ -22,7 +22,7 @@ public Emp {
   	@Assemble(
       	container = "dept", 
       	prop = { "name:secondDeptName", "parentDeptId:firstIdDeptId"},
-      	order = 2 // 指定顺序
+      	sort = 2 // 指定顺序
     )
   	private Integer secondDeptId;
   	private String secondDeptName;
@@ -30,7 +30,7 @@ public Emp {
   	@Assemble(
       	container = "dept", 
       	prop = { "name:thirdDeptName", "parentDeptId:secondDeptId"},
-      	order = 1 // 指定顺序
+      	sort = 1 // 指定顺序
     )
   	private Integer thirdDeptId;
   	private String thirdDeptName;

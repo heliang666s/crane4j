@@ -24,7 +24,7 @@ private Crane4jGlobalConfiguration configuration; // 从 Spring 获的默认配�
 
 ## 2.数据源容器
 
-<img src="https://img.xiajibagao.top/image-20230210133633050.png" alt="container" style="zoom: 33%;" />
+<img src="./image-20230210133633050.png" alt="container" style="zoom: 33%;" />
 
 每个填充操作都需要对应一个**数据源**，我们通常会通过外键从数据源中得到对应的数据——可能是单个对象，也可能是对象集合——用于后续填充。在 crane4j 中，一个数据源对应一个**数据源容器** (`Container`)，而每个容器都具备全局唯一的**命名空间** (`namespace`)。
 
@@ -65,7 +65,7 @@ crane4j 支持的容器远远不止这些，它还可以基于枚举、字典、
 
 ## 3.操作配置&解析器
 
-<img src="https://img.xiajibagao.top/image-20230220180719411.png" alt="operation" style="zoom:33%;" />
+<img src="./image-20230220180719411.png" alt="operation" style="zoom:33%;" />
 
 在 crane4j 中，“操作” (`Operation`) 泛指一切通过需要 crane4j 完成的行为，它们通常分为两类：
 
@@ -104,7 +104,7 @@ BeanOperations operations = parser.parse(Foo.class);
 
 ## 4.注解处理器
 
-![](http://img.xiajibagao.top/%E6%97%A0%E6%A0%87%E9%A2%98-2023-06-04-1303.png)
+![](./image-2023-06-04-1303.png)
 
 crane4j 支持通过各种注解快速的配置填充和拆卸操作，它们实际上是通过注册在操作配置解析器 `BeanOperationParser` 中的注解处理器 `OperationAnnotationHandler` 进行处理的。
 
@@ -112,7 +112,7 @@ crane4j 支持通过各种注解快速的配置填充和拆卸操作，它们实
 
 ## 5.操作执行器
 
-![BeanOperationExecutor](https://img.xiajibagao.top/image-20230221133602215.png)
+![BeanOperationExecutor](./image-20230221133602215.png)
 
 当你已经有了操作配置后，你还需要有一个操作执行器 (`BeanOperationExecutor`) ——它依然从全局配置中获取——用来按照操作配置真正的完成填充操作，比如这样：
 
@@ -163,7 +163,7 @@ crane4j 提供了两类填充方式，它们主要的区别在于填充的触发
 
 ## 7.配置风格
 
-![ConfigurationStyle](http://img.xiajibagao.top/image-20231013011413703.png)
+![ConfigurationStyle](./image-20231013011413703-2560885.png)
 
 参考 Vue，crane4j 支持**组合式**和**选项式**两种的配置风格，两者主要的区别在于是否在类或类的属性上配置注解时一并配置数据源容器。
 

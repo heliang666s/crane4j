@@ -2,7 +2,7 @@
 layout: home
 hero:
     name: Crane4j
-    text: 强大又好用的数据填充框架
+    text: 强大又好用的关联字段填充框架
 #    image:
 #        src: ./image-20230220150040070.png
 ##        src: ./CRANE4J_ICON.png

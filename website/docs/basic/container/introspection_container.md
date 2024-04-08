@@ -77,12 +77,12 @@ private static class Foo {
 
 AssembleKeyAnnotationHandler handler = SpringUtil.getBean(AssembleKeyAnnotationHandler.class);
 handler.registerValueMapperProvider("phone_number_desensitization", element -> {
-    Skip skip = element.getAnnotation(Skip.class);
+    Skip skip = element.getAnnotation(Skip.class); // 通过获取注解得到额外的信息
     return key -> { 
         String phone = (String)key;
-        // 如果是 0086-10012341234 格式，那么跳过 ‘0086-’前五个字符
+        // 如果是 0086-10012341234 格式，那么根据注解的配置跳过 ‘0086-’前五个字符
         if (Objects.nonNull(skip)) {
-            phone = phone.substring(skip);
+            phone = phone.substring(skip.value());
         }
         return phone.substring(0, 3) + "****" + phone.substring(7) // 将手机号中间四位替换为 *
     }	

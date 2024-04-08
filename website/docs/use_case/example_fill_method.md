@@ -84,7 +84,7 @@ public UserInfo {
     // 其他属性......
   
   	@Assemble(
-    		container = "user", // 引用配置好的数据源,
+      	container = "user", // 引用配置好的数据源,
       	props = { // 配置属性映射
           	@Mapping(src = "name", ref = "userName"),
             @Mapping(src = "address", ref = "userAddress"),
@@ -111,9 +111,13 @@ public class UserService {
 }
 ~~~
 
+:::tip
+
 - 关于如何指定字段映射，具体内容可以参见：[字段映射](./../basic/property_mapping.md) 一节；
-- 你可以基于更多的配置项和不同的声明方式来配置基于方法的填充操作，具体内容可以参见：[方法填充](./../basic/container/method_container.md) 一节；
+- 你可以基于更多的配置项和不同的声明方式来配置基于方法的填充操作，具体内容可以参见：[方法数据源容器](./../basic/container/method_container.md) 一节；
 - 除了基于 AOP 自动触发，crane4j 还支持更多的触发方式，具体内容可以参见：[触发填充操作](./../basic/trigger_operation.md) 一节；
+
+:::
 
 ## 3.选项式配置
 
@@ -125,7 +129,7 @@ public UserInfo {
     // 其他属性......
   
   	@AssembleMethod(
-    		target = "userDAO", // 引用目标对象，可以是 beanName 或者类的全限定名
+      	target = "userDAO", // 引用目标对象，可以是 beanName 或者类的全限定名
       	method = @ContainerMethod(
           	bindMethod = "listUsers", // 绑定 listUsers 方法
             resultType = User.class, // 该方法的返回值为 User

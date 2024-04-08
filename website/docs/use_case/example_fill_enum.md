@@ -78,9 +78,13 @@ service.getStudents(Arrays.asList(1, 2));
 // 执行结果为：[{genderCode=1, genderName="男"}, {genderCode=0, genderName="女"}]
 ~~~
 
+:::tip
+
 - 关于如何指定字段映射，具体内容可以参见：[字段映射](./../basic/property_mapping.md) 一节；
 - 你可以基于更多的配置项和不同的声明方式来配置基于枚举的填充操作，具体内容可以参见：[枚举填充](./../basic/container/enum_container.md) 一节；
 - 除了基于 AOP 自动触发，crane4j 还支持更多的触发方式，具体内容可以参见：[触发填充操作](./../basic/trigger_operation.md) 一节；
+
+:::
 
 ## 3.组合式配置
 

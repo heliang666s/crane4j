@@ -370,3 +370,31 @@
 **Fix**
 
 - [将接受单个参数并返回单个对象的方法作为数据源容器时，填充出现问题](https://gitee.com/opengoofy/crane4j/issues/I9C5GA)；
+
+## 2.7.0 (2024-04-08)
+
+这是一个新特性版本，修复了一些问题，重构了一些底层组件，提高了字段映射的执行性能，并添加了键值解析器、字段映射的字面量配置的新特性。
+
+具体内容参见：[Milestone](https://github.com/opengoofy/crane4j/milestone/11)。
+
+**Feature**
+
+-   [在 Spring 环境默认启用 AsyncBeanOperationExecutor 执行器](https://github.com/opengoofy/crane4j/issues/246)；
+-   [简化属性映射配置，支持通过字面量的形式配置](https://github.com/opengoofy/crane4j/issues/230)；
+-   [将从目标对象中提取 key 值的操作分离为独立的键值提取器](https://github.com/opengoofy/crane4j/issues/103)；
+-   [数据源容器支持接受对象类型参数](https://github.com/opengoofy/crane4j/issues/222)；
+-   [支持在被 `@AutoOperate` 注解的方法上添加操作配置](https://github.com/opengoofy/crane4j/issues/223)；
+
+**Refactor**
+
+-   [重构 `AssembleOpeartionHandler`，调整抽象层级，并与键值解析器进行整合](https://github.com/opengoofy/crane4j/issues/244)；
+-   [重构反射工厂，优化字段映射的执行效率](https://github.com/opengoofy/crane4j/issues/232)；
+
+**Fix**
+
+- [当作为数据源容器的方法接受单个参数并返回集合类型结果时，只会填充集合中的首个元素](https://gitee.com/opengoofy/crane4j/issues/I97R7E)；
+
+**Doc**
+
+-   [改为使用 VitePress 作为文档构建框架](https://github.com/opengoofy/crane4j/issues/240)；
+-   [完善文档场景示例](https://github.com/opengoofy/crane4j/issues/231)；

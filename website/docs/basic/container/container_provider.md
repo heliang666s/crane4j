@@ -2,7 +2,7 @@
 
 容器提供者 `ContainerProvider` 是用于获取数据源容器的组件，类似于 Spring 中的 `FactoryBean`，全局配置类 `Crane4jGlobalConfiguration` 本身就是一个 `ContainerProvider`。
 
-它被设计用于接入第基于三方框架实现的容器，比如 `MybatisPlusQueryContainerProvider`，我们可以通过它获取基于 `BaseMapper#selectList` 方法构建的特殊方法容器，当调用时等同于调用`BaseMapper#selectList` 方法。
+与 Spring 的 `FactoryBean` 一样，它用于管理一些创建过程较为复杂的数据源容器，或者提供一种更灵活的途径去接入第三方框架提供的数据源。比如在 MybatisPlus 扩展中，crane4j 通过 `MybatisPlusQueryContainerProvider` 这个提供者接入 MP 的查询功能，我们可以通过它获取基于 `BaseMapper#selectList` 方法构建的特殊方法容器，当调用时等同于调用`BaseMapper#selectList` 方法。
 
 ![image-20230311184930927](https://img.xiajibagao.top/image-20230311184930927.png)
 

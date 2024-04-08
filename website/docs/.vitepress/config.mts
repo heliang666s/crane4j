@@ -4,9 +4,10 @@ import {defineConfig} from 'vitepress'
 export default defineConfig({
     lastUpdated: true,
     base: '/crane4j/',
+    head: [['link', { rel: 'icon', href: `/crane4j/CRANE4j_LOGO.ico` }]],
     outDir: "./../../docs/",
     title: "Crane4j",
-    description: "Crane4j, 基于注解的数据关联框架",
+    description: "Crane4j, 基于注解的关联字段填充框架",
     themeConfig: {
         // 文章展示多级目录
         outline: 'deep',
@@ -57,14 +58,15 @@ export default defineConfig({
             },
             {
                 text: '场景示例',
-                link: "/use_case/example_fill_enum.md",
                 items: [
                     { text: "示例：如何基于枚举进行填充", link: "/use_case/example_fill_enum.md" },
                     { text: "示例：如何在填充后进行附加操作", link: "/use_case/example_additional_action.md" },
                     { text: "示例：如何基于方法填充", link: "/use_case/example_fill_method.md" },
                     { text: "示例：如何填充被包装的返回值", link: "/use_case/example_fill_wrapped_return_value.md" },
-                    { text: "示例: 如何填充一个复杂对象", link: "/use_case/example_multi_datasource.md" },
-                    { text: "示例: 如何进行级联填充", link: "/use_case/example_fill_relations.md" },
+                    { text: "示例：如何填充一个复杂对象", link: "/use_case/example_multi_datasource.md" },
+                    { text: "示例：如何进行级联填充", link: "/use_case/example_fill_relations.md" },
+                    { text: "示例：如何通过多个Key关联数据", link: "/use_case/example_multi_key.md" },
+                    { text: "示例：如何在执行时排除某一些操作", link: "/use_case/example_exclude_operation.md" },
                 ]
             },
             {
