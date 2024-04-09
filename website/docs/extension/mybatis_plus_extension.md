@@ -147,9 +147,7 @@ private String name;
     selects = {"userName", "userAge"}, // 要查询的字段
     where = "userName" // 查询的条件字段
 )
-private
-
- String name;
+private String name;
 ```
 
 上述配置相当于使用 `QueryWrapper` 构建并执行了 `select user_age AS userAge, user_name AS userName from foo where user_name in ?` 这条 SQL，查询出的数据将按照用户指定的 `name` 属性进行分组。

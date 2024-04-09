@@ -112,26 +112,49 @@ public List<Foo> doOperate() {
 结果：
 
 ~~~json
-[
-    {
-        "id": 1,
-        "name": "foo1",
-        "fooName": "foo1",
-        "gender": 1,
-        "genderName": "男性",
-        "keys": ["1", "2", "3"],
-        "values": ["A", "B", "C"]
-    },
-    {
-        "id": 2,
-        "name": "foo2",
-        "fooName": "foo2",
-        "gender": 0,
-        "genderName": "女性",
-        "keys": ["1", "2", "3"],
-        "values": ["A", "B", "C"]
-    }
-]
+[{
+    "name": "foo1",
+    "gender": 1,
+    "genderName": "男",
+    "deptId": 10086,
+    "empNames": [ "张三", "李四", "王五" ],
+    "letter": "a",
+    "letterName": "A",
+    "fooName": "foo1",
+    "phone": "124****2563",
+    "nestedBeans": [
+        {
+            "name": "foo2",
+            "gender": 1,
+            "genderName": "男",
+            "deptId": 10086,
+            "empNames": [
+                "张三",
+                "李四",
+                "王五"
+            ],
+            "letter": "a",
+            "letterName": "A",
+            "fooName": "foo2",
+            "phone": "124****2563"
+        },
+        {
+            "name": "foo3",
+            "gender": 1,
+            "genderName": "男",
+            "deptId": 10086,
+            "empNames": [
+                "张三",
+                "李四",
+                "王五"
+            ],
+            "letter": "a",
+            "letterName": "A",
+            "fooName": "foo3",
+            "phone": "124****2563"
+        }
+    ]
+}]
 ~~~
 
 这就是在 springboot 环境中使用 `crane4j` 的最简单步骤，更多玩法请参见官方文档。
