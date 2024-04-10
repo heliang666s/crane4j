@@ -159,10 +159,10 @@ public List<Foo> doOperate() {
 
 这就是在 springboot 环境中使用 `crane4j` 的最简单步骤，更多玩法请参见官方文档。
 
-## 友情链接 & 最佳实践
+## 友情链接
 
 - [[ hippo4j \]](https://gitee.com/agentart/hippo4j)：强大的动态线程池框架，附带监控报警功能；
-- [[[continew-admin]](https://gitee.com/continew/continew-admin)：持续迭代优化的前后端分离中后台管理系统框架，开箱即用，持续提供舒适的开发体验；
+- [[ continew-admin ]](https://gitee.com/continew/continew-admin)：持续迭代优化的前后端分离中后台管理系统框架，开箱即用，持续提供舒适的开发体验；
 
 ## 参与贡献和技术支持
 
