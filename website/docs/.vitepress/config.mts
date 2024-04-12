@@ -1,16 +1,20 @@
 import {defineConfig} from 'vitepress'
 
+const basePath = '/crane4j/';
+
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
     lastUpdated: true,
-    base: '/crane4j/',
-    head: [['link', { rel: 'icon', href: `/crane4j/CRANE4j_LOGO.ico` }]],
+    base: basePath,
+    head: [['link', { rel: 'icon', href: basePath + 'CRANE4J_ICON.png' }]],
     outDir: "./../../docs/",
     title: "Crane4j",
     description: "Crane4j, 基于注解的关联字段填充框架",
     themeConfig: {
         // 文章展示多级目录
         outline: 'deep',
+        // 站点logo
+        logo: "/CRANE4J_ICON_UNB.png",
         // 启用全局搜索
         search: {
             provider: 'local'
