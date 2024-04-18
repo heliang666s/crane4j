@@ -77,6 +77,7 @@ export default defineConfig({
                 text: '数据源容器',
                 link: "/basic/container/container_abstract.md",
                 items: [
+                    { text: "注册数据源容器", link: "/basic/container/register_container.md" },
                     { text: "Map集合 & 本地缓存", link: "/basic/container/map_container.md" },
                     { text: "枚举类", link: "/basic/container/enum_container.md" },
                     { text: "常量类", link: "/basic/container/constant_container.md" },
