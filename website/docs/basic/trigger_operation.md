@@ -38,7 +38,22 @@ executor.execute(foos, operation);
 
 ## 2.自动填充
 
-在`crane4j`中，可以基于 Spring AOP 的切面来实现自动填充方法的参数和返回值，这种方式称为**自动填充**。
+在`crane4j`中，你可以基于代理来实现自动填充方法的参数和返回值，这种方式称为**自动填充**。
+
+在 Spring 环境中，crane4j 会借助 Spring AOP 实现，而在非 Spring 环境中，你可以通过手动代理实现类似的效果：
+
+~~~java
+// 创建一个全局配置类
+Crane4jGlobalConfiguration configuration = SimpleCrane4jGlobalConfiguration.create();
+// 创建一个代理工厂
+AutoOperateProxy autoOperateProxy = ConfigurationUtil.createAutoOperateProxy(configuration);
+// 创建代理对象
+Example example = new Example();
+Example proxy = autoOperateProxy.wrapIfNecessary(example);
+
+// 调用被代理的方法，此时会触发自动填充
+proxy.doSomething();
+~~~
 
 ### 2.1.配置
 
