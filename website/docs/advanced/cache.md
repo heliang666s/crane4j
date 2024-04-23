@@ -137,7 +137,27 @@ public List<Foo> annotatedMethod(List<String> args) {
 - 在 Spring 环境，你仅需要将其交给 Spring 托管即可，项目启动后 Crane4j 将会自动获取并注册它，此后你可以通过它的 beanName 获取它。
 - 在非 Spring 环境，你需要在创建/获取 `SimpleCrane4jGlobalConfiguration` 后，获取 `cacheManagerMap` 属性并注册你的管理器。
 
-### 2.2.刷新缓存
+### 2.2.使用内置管理器
+
+crane4j 默认提供了下述管理器实现，你可以通过 beanName 来引用它们：
+
+| 管理器                        | 描述                                                         | 适用环境 |
+| ----------------------------- | ------------------------------------------------------------ | -------- |
+| GuavaCacheManager             | 基于 Guava 的 Cache 组件实现，支持设置到期时间               | 所有     |
+| MapCacheManager               | 基于 Guava 的 MapMaker 实现，不支持设置到期时间，管理器对数据弱引用，不使用时，随 JVM GC 自动回收 | 所有     |
+| SoftConcurrentMapCacheManager | 基于 Spring 的 ConcurrentReferenceHashMap 实现，管理器对数据软引用，不使用时，由 JVM 在任意时刻自动回收 | Spring   |
+
+在 Spring 环境，你还可以通过预置的组合注解方便的使用它们：
+
+~~~java
+@GuavaContainerCache // 指定使用 GuavaCacheManager 作为缓存管理器
+@ContainerMethod(namespace = "annotatedMethod", resultType = Foo.class)
+public List<Foo> annotatedMethod(List<String> args) {
+    return args.stream().map(key -> new Foo(key, key)).collect(Collectors.toList());
+}
+~~~
+
+### 2.3.刷新缓存
 
 一般情况下，缓存会根据你设置的过期时间自动过期，不过在某些时候，你可能需要手动的刷新缓存。此时，你可以选择直接**通过缓存管理器移除这个缓存**：
 

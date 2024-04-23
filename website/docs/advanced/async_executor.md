@@ -60,7 +60,16 @@ configuration.getBeanOperationExecutorMap().put(operationExecutor.getClass().get
 在进行自动填充时，你可以在 `@AutoOperate` 注解中指定使用异步执行器：
 
 ~~~java
-@AutoOperate(type = Foo.class, executor = "AsyncBeanOperationExecutor")
+@AutoOperate(type = Foo.class, executorType = AsyncBeanOperationExecutor.class)
+public List<Foo> getFoo(Integer type) {
+    // do nothing
+}
+~~~
+
+在 2.7.0 及以上版本，你也可以直接使用默认提供好的组合注解快捷使用：
+
+~~~java
+@AsyncAutoOperate(type = Foo.class)
 public List<Foo> getFoo(Integer type) {
     // do nothing
 }
@@ -82,7 +91,7 @@ OperateTemplate.execute(foos, operationExecutor, op -> true);
 在操作者接口中，你可以在 `@Operator` 注解中指定要使用异步执行器：
 
 ~~~java
-@Operator(executor = "AsyncBeanOperationExecutor") // 使用异步执行器
+@Operator(executorType = AsyncBeanOperationExecutor.class) // 使用异步执行器
 private interface OperatorInterface {
     @Assemble(key = "id", container = "test", props = @Mapping(ref = "name"))
     void operate(Collection<Map<String, Object>> targets);

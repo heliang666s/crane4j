@@ -38,7 +38,7 @@ executor.execute(foos, operation);
 
 ## 2.自动填充
 
-在`crane4j`中，你可以基于代理来实现自动填充方法的参数和返回值，这种方式称为**自动填充**。
+在 crane4j 中，你可以基于代理来实现自动填充方法的参数和返回值，这种方式称为**自动填充**。
 
 在 Spring 环境中，crane4j 会借助 Spring AOP 实现，而在非 Spring 环境中，你可以通过手动代理实现类似的效果：
 

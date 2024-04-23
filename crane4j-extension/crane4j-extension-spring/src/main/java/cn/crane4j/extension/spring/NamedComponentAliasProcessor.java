@@ -21,6 +21,7 @@ import org.springframework.context.ApplicationContextAware;
 public class NamedComponentAliasProcessor implements BeanPostProcessor, ApplicationContextAware {
 
     private ConfigurableListableBeanFactory configurableListableBeanFactory;
+
     @Override
     public Object postProcessBeforeInitialization(@NonNull Object bean, @NonNull String beanName) throws BeansException {
         if (bean instanceof NamedComponent) {
@@ -39,6 +40,7 @@ public class NamedComponentAliasProcessor implements BeanPostProcessor, Applicat
     }
 
     @Override
+
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         BeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
         Asserts.isTrue(beanFactory instanceof ConfigurableListableBeanFactory, "The bean factory must be an instance of ConfigurableListableBeanFactory");
