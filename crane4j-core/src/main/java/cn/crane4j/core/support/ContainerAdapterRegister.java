@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface ContainerAdapterRegister {
 
     /**
-     * Get target type.
+     * Get adapter by target type.
      *
      * @param targetType target type
      * @return {@link Adapter} instance.

@@ -25,7 +25,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * test for {@link NamespaceResolvableQueryContainerProvider}
+ * test for {@link AbstractNamespaceResolvableQueryContainerProvider}
  *
  * @author huangchengxing
  */
@@ -111,7 +111,7 @@ public class NamespaceResolvableQueryContainerProviderTest {
         }
     }
 
-    private static class TestQueryContainerCreator extends NamespaceResolvableQueryContainerProvider<Object> {
+    private static class TestQueryContainerCreator extends AbstractNamespaceResolvableQueryContainerProvider<Object> {
         private final List<Recorder> recorders = new ArrayList<>();
         public TestQueryContainerCreator(MethodInvokerContainerCreator methodInvokerContainerCreator) {
             super(methodInvokerContainerCreator);

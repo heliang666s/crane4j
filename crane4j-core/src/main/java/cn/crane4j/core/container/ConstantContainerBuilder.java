@@ -166,14 +166,7 @@ public class ConstantContainerBuilder {
         boolean isReverse = ObjectUtils.defaultIfNull(this.reverse, false);
 
         // build fieldFilter
-        Predicate<Field> fieldFilter = field -> Modifier.isStatic(field.getModifiers());
-        if (isOnlyPublic) {
-            fieldFilter = fieldFilter.and(field -> Modifier.isPublic(field.getModifiers()));
-        }
-        if (isOnlyExplicitlyIncluded) {
-            fieldFilter = fieldFilter.and(field -> annotationFinder.hasAnnotation(field, ContainerConstant.Include.class));
-        }
-        fieldFilter = fieldFilter.and(field -> !annotationFinder.hasAnnotation(field, ContainerConstant.Exclude.class));
+        Predicate<Field> fieldFilter = determineFieldFilter(isOnlyPublic, isOnlyExplicitlyIncluded);
 
         // get attribute
         Field[] fields = ReflectUtils.getFields(constantClass);
@@ -190,5 +183,18 @@ public class ConstantContainerBuilder {
         // build container
         String actualNamespace = StringUtils.emptyToDefault(this.namespace, constantClass.getSimpleName());
         return ImmutableMapContainer.forMap(actualNamespace, isReverse ? CollectionUtils.reverse(data) : data);
+    }
+
+    @NonNull
+    private Predicate<Field> determineFieldFilter(boolean isOnlyPublic, boolean isOnlyExplicitlyIncluded) {
+        Predicate<Field> fieldFilter = field -> Modifier.isStatic(field.getModifiers());
+        if (isOnlyPublic) {
+            fieldFilter = fieldFilter.and(field -> Modifier.isPublic(field.getModifiers()));
+        }
+        if (isOnlyExplicitlyIncluded) {
+            fieldFilter = fieldFilter.and(field -> annotationFinder.hasAnnotation(field, ContainerConstant.Include.class));
+        }
+        fieldFilter = fieldFilter.and(field -> !annotationFinder.hasAnnotation(field, ContainerConstant.Exclude.class));
+        return fieldFilter;
     }
 }

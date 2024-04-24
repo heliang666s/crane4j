@@ -98,7 +98,7 @@ public abstract class AbstractStandardAssembleAnnotationHandler<A extends Annota
      * @param parser         bean operation parser
      * @param beanOperations bean operations to resolve
      * @param standardAnnotation standard annotation
-     * @return {@link KeyTriggerOperation} instance if element and annotation is resolvable, null otherwise
+     * @return {@link KeyTriggerOperation} instance if element and annotation are resolvable, null otherwise
      */
     @Nullable
     @Override
@@ -202,7 +202,7 @@ public abstract class AbstractStandardAssembleAnnotationHandler<A extends Annota
     // =============== process standard configuration ===============
 
     /**
-     * Get assemble operation groups from given {@link StandardAssembleAnnotation}.
+     * Get to assemble operation groups from given {@link StandardAssembleAnnotation}.
      *
      * @param standardAnnotation standard annotation
      * @return assemble operation groups
@@ -310,7 +310,7 @@ public abstract class AbstractStandardAssembleAnnotationHandler<A extends Annota
     public interface StandardAssembleAnnotation<A extends Annotation> extends StandardAnnotation<A> {
 
         /**
-         * Get key property type.
+         * Get a key property type.
          *
          * @return key type
          */

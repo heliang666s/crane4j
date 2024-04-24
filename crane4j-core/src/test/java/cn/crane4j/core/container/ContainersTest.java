@@ -151,7 +151,7 @@ public class ContainersTest {
     @ContainerEnum
     @Getter
     private enum DefaultAnnotatedEnum {
-        ONE, TWO;
+        ONE, TWO
     }
 
     @ContainerEnum(namespace = "AnnotatedEnum", key = "key", value = "value")

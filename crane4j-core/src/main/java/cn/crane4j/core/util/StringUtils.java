@@ -1,6 +1,7 @@
 package cn.crane4j.core.util;
 
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
  *
  * @author huangchengxing
  */
+@Slf4j
 @NoArgsConstructor(access = lombok.AccessLevel.PRIVATE)
 public class StringUtils {
 
@@ -231,7 +233,7 @@ public class StringUtils {
             byte[] digest = md5.digest(str.getBytes(StandardCharsets.UTF_8));
             return new BigInteger(1, digest).toString(16);
         } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
+            log.debug("md5 digest error", e);
             return str;
         }
     }

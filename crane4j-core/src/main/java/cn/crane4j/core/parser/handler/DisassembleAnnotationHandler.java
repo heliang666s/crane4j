@@ -67,7 +67,7 @@ public class DisassembleAnnotationHandler
      * @param parser         bean operation parser
      * @param beanOperations bean operations to resolve
      * @param standardAnnotation standard annotation
-     * @return {@link KeyTriggerOperation} instance if element and annotation is resolvable, null otherwise
+     * @return {@link KeyTriggerOperation} instance if element and annotation are resolvable, null otherwise
      */
     @Nullable
     @Override

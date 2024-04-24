@@ -32,6 +32,7 @@ public interface ContainerManager extends ConfigurableContainerProvider {
      * Canonicalize namespace.
      *
      * @param namespace namespace
+     * @param providerName provider name
      * @return container
      */
     static String canonicalNamespace(String namespace, @Nullable String providerName) {
@@ -148,7 +149,7 @@ public interface ContainerManager extends ConfigurableContainerProvider {
     Collection<Container<Object>> getAllLimitedContainers();
 
     /**
-     * Obtaining and caching container instances from the specified container provider..
+     * Obtaining and caching container instances from the specified container provider.
      *
      * @param providerName container provider name
      * @param namespace namespace of container

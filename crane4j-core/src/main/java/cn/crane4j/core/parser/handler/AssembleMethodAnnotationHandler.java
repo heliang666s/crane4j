@@ -10,7 +10,7 @@ import cn.crane4j.core.parser.handler.strategy.PropertyMappingStrategyManager;
 import cn.crane4j.core.support.AnnotationFinder;
 import cn.crane4j.core.support.Crane4jGlobalConfiguration;
 import cn.crane4j.core.support.Crane4jGlobalSorter;
-import cn.crane4j.core.support.container.ContainerMethodSupport;
+import cn.crane4j.core.support.container.AbstractContainerMethodSupport;
 import cn.crane4j.core.support.container.MethodContainerFactory;
 import cn.crane4j.core.util.Asserts;
 import cn.crane4j.core.util.ClassUtils;
@@ -44,12 +44,12 @@ import java.util.Optional;
  *
  * @author huangchengxing
  * @see AssembleMethod
- * @see ContainerMethodSupport
+ * @see AbstractContainerMethodSupport
  * @since 2.2.0
  */
 @Slf4j
 public class AssembleMethodAnnotationHandler
-    extends InternalProviderAssembleAnnotationHandler<AssembleMethod> {
+    extends AbstractInternalProviderAssembleAnnotationHandler<AssembleMethod> {
 
     protected final ContainerMethodResolver containerMethodResolver;
 
@@ -143,7 +143,7 @@ public class AssembleMethodAnnotationHandler
     }
 
     /**
-     * Resolve target type.
+     * Resolve target class.
      *
      * @param annotation annotation
      * @return target type
@@ -179,7 +179,7 @@ public class AssembleMethodAnnotationHandler
     protected class CacheableContainerMethodResolver extends ContainerMethodResolver {
 
         /**
-         * Create a {@link ContainerMethodSupport} instance.
+         * Create a {@link AbstractContainerMethodSupport} instance.
          *
          * @param methodContainerFactories method container factories
          */
@@ -221,10 +221,10 @@ public class AssembleMethodAnnotationHandler
      *
      * @author huangchengxing
      */
-    protected class ContainerMethodResolver extends ContainerMethodSupport {
+    protected class ContainerMethodResolver extends AbstractContainerMethodSupport {
 
         /**
-         * Create a {@link ContainerMethodSupport} instance.
+         * Create a {@link AbstractContainerMethodSupport} instance.
          *
          * @param methodContainerFactories method container factories
          */
@@ -262,7 +262,7 @@ public class AssembleMethodAnnotationHandler
     }
 
     /**
-     * An internal container, used to cover namespace of container which create by resolver.
+     * An internal container, used to cover namespace of container which creates by resolver.
      *
      * @author huangchengxing
      */

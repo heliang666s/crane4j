@@ -79,7 +79,7 @@ public abstract class AbstractAutoOperateAnnotatedElementResolver implements Aut
     protected abstract MethodInvoker resolveExtractor(AnnotatedElement element, AutoOperate annotation);
 
     /**
-     * Resolve group for {@link AutoOperate#includes()} and {@link AutoOperate#excludes()}.
+     * Resolve a group for {@link AutoOperate#includes()} and {@link AutoOperate#excludes()}.
      *
      * @param annotation annotation
      * @return actual include groups

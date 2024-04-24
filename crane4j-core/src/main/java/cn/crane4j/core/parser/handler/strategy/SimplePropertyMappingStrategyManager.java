@@ -28,6 +28,7 @@ public class SimplePropertyMappingStrategyManager implements PropertyMappingStra
      * @see PropertyMappingStrategy
      * @since 2.1.0
      */
+    @Override
     public void addPropertyMappingStrategy(@NonNull PropertyMappingStrategy strategy) {
         Objects.requireNonNull(strategy, "strategy must not null");
         propertyMappingStrategies.put(strategy.getName(), strategy);

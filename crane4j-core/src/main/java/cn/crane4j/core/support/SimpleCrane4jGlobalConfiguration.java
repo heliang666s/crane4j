@@ -1,8 +1,8 @@
 package cn.crane4j.core.support;
 
+import cn.crane4j.core.cache.AbstractMapCacheManager;
 import cn.crane4j.core.cache.CacheManager;
 import cn.crane4j.core.cache.GuavaCacheManager;
-import cn.crane4j.core.cache.MapCacheManager;
 import cn.crane4j.core.condition.ConditionOnContainerParser;
 import cn.crane4j.core.condition.ConditionOnPropertyNotEmptyParser;
 import cn.crane4j.core.condition.ConditionOnPropertyNotNullParser;
@@ -265,7 +265,7 @@ public class SimpleCrane4jGlobalConfiguration
             GuavaCacheManager guavaCacheManager = new GuavaCacheManager();
             configuration.getCacheManagerMap()
                 .put(guavaCacheManager.getName(), guavaCacheManager);
-            MapCacheManager mapCacheManager = MapCacheManager.newWeakConcurrentMapCacheManager();
+            AbstractMapCacheManager mapCacheManager = AbstractMapCacheManager.newWeakConcurrentMapCacheManager();
             configuration.getCacheManagerMap()
                 .put(mapCacheManager.getName(), mapCacheManager);
         }

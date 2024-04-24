@@ -16,10 +16,10 @@ import java.util.Objects;
  * @author huangchengxing
  * @since 2.3.0
  */
+@Getter
 @RequiredArgsConstructor
 public class ComposableAutoOperateAnnotatedElementResolver implements AutoOperateAnnotatedElementResolver {
 
-    @Getter
     private final List<AutoOperateAnnotatedElementResolver> resolvers;
 
     /**

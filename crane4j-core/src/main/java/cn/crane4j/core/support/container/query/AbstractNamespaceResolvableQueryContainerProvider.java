@@ -18,8 +18,8 @@ import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * A standard implementation of {@link AbstractQueryContainerProvider}.
- * provides the ability to generate query container by the specified namespace
+ * <p>A standard implementation of {@link AbstractQueryContainerProvider}.<br/>
+ * Provides the ability to generate query container by the specified namespace
  * and generate namespace by the specified query information.
  *
  * @author huangchengxing
@@ -27,7 +27,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @deprecated This class is still used, but it will be refactored in the future.
  */
 @Slf4j
-public abstract class NamespaceResolvableQueryContainerProvider<T> extends AbstractQueryContainerProvider<T> {
+public abstract class AbstractNamespaceResolvableQueryContainerProvider<T> extends AbstractQueryContainerProvider<T> {
 
     /**
      * the template of namespace, such as {@code @ProviderClassSimpleName#repository#keyProperty#prop1,prop2,prop3...}.
@@ -41,7 +41,7 @@ public abstract class NamespaceResolvableQueryContainerProvider<T> extends Abstr
      *
      * @param methodInvokerContainerCreator {@link MethodInvokerContainerCreator} instance.
      */
-    protected NamespaceResolvableQueryContainerProvider(MethodInvokerContainerCreator methodInvokerContainerCreator) {
+    protected AbstractNamespaceResolvableQueryContainerProvider(MethodInvokerContainerCreator methodInvokerContainerCreator) {
         super(methodInvokerContainerCreator);
     }
 

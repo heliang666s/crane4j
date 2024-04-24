@@ -119,7 +119,7 @@ public class DefaultContainerManager implements ContainerManager {
             ContainerDefinition newDefinition = ConfigurationUtil.triggerWhenRegistered(
                     definition, key.toString(), t, containerLifecycleProcessorList, log
             );
-            // no change if new definition is null
+            // no change if the new definition is null
             if (Objects.isNull(newDefinition)) {
                 return t;
             }

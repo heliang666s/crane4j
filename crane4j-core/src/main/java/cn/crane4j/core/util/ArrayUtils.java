@@ -18,12 +18,13 @@ import java.util.stream.Stream;
 public class ArrayUtils {
 
     /**
-     * <p>Get first not null element from array.
+     * <p>Get first a not null element from an array.
      *
      * @param array array
      * @param <T> element type
      * @return first not null element, null if array is null or all elements are null
      */
+    @SafeVarargs
     public static <T> T getFirstNotNull(T... array) {
         if (Objects.isNull(array)) {
             return null;
@@ -42,7 +43,7 @@ public class ArrayUtils {
      * @param array array to append
      * @param elements elements
      * @param <T> element type
-     * @return new array with elements appended, if array is null, return {@code elements} directly
+     * @return new array with elements appended, if the array is null, return {@code elements} directly
      */
     @SafeVarargs
     public static <T> T[] append(T[] array, T... elements) {
@@ -134,7 +135,7 @@ public class ArrayUtils {
     }
 
     /**
-     * <p>Get element from array, return null if array is null or index out of bounds.
+     * <p>Get element from an array, return null if the array is null or index out of bounds.
      *
      * @param array array
      * @param index index
@@ -152,7 +153,7 @@ public class ArrayUtils {
     }
 
     /**
-     * <p>Get length of array, return 0 if array is null.
+     * <p>Get length of an array, return 0 if the array is null.
      *
      * @param array array
      * @param <T> type of array

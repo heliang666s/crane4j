@@ -6,6 +6,7 @@ import cn.crane4j.core.support.SimpleAnnotationFinder;
 import cn.crane4j.core.support.SimpleParameterNameFinder;
 import cn.hutool.core.util.ReflectUtil;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.SneakyThrows;
 import org.junit.Assert;
@@ -329,17 +330,16 @@ public class ReflectUtilsTest {
     @Annotation
     private static class Foo extends Super implements Interface {
 
+        @Getter
         @Annotation
         private Integer standard;
 
         @Annotation
         private Integer fluent;
 
+        @Getter
         private boolean flag;
 
-        public Integer getStandard() {
-            return standard;
-        }
         public void setStandard(Integer standard) {
 
         }
@@ -351,9 +351,6 @@ public class ReflectUtilsTest {
 
         }
 
-        public boolean isFlag() {
-            return flag;
-        }
         public void isFlag(boolean flag) {
         }
     }

@@ -8,7 +8,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author huangchengxing
  */
 @MapperScan("cn.crane4j.mybatis.plus.extension.example")
-//@EnableCrane4j
 @SpringBootApplication
 public class Crane4jMybatisPlusExampleApplication {
 

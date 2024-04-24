@@ -263,7 +263,7 @@ public abstract class AbstractStandardOperationAnnotationHandler<A extends Annot
         String getId();
 
         /**
-         * Key field name for query
+         * Key field name for a query
          *
          * @return key field name
          */

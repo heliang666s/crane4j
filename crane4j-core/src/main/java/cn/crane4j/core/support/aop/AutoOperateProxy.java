@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 /**
- * A proxy factory for auto operate.
+ * A proxy factory for auto operates.
  *
  * @author huangchengxing
  * @since 2.8.0
@@ -36,7 +36,7 @@ public class AutoOperateProxy {
     private final ProxyFactory proxyFactory;
 
     /**
-     * Wrap target object if necessary.
+     * Wrap a target object if necessary.
      *
      * @param target target object
      * @param <T> target type

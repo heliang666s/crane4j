@@ -70,7 +70,7 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
             FieldAccess access = CollectionUtils.computeIfAbsent(fieldAccessCaches, beanType, FieldAccess::get);
             try {
                 int fieldIndex = access.getIndex(field.getName());
-                return new ReflectAsmFieldInvoker.Setter(access, fieldIndex);
+                return new AbstractReflectAsmFieldInvoker.Setter(access, fieldIndex);
             } catch (IllegalArgumentException e) {
                 return super.createSetterInvokerForField(propertyName, field);
             }
@@ -84,7 +84,7 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
             FieldAccess access = CollectionUtils.computeIfAbsent(fieldAccessCaches, beanType, FieldAccess::get);
             try {
                 int fieldIndex = access.getIndex(field.getName());
-                return new ReflectAsmFieldInvoker.Getter(access, fieldIndex);
+                return new AbstractReflectAsmFieldInvoker.Getter(access, fieldIndex);
             } catch (IllegalArgumentException e) {
                 return super.createGetterInvokerForField(propertyName, field);
             }
@@ -122,7 +122,7 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
          *
          * @param target target
          * @param args args
-         * @return result of invoke
+         * @return result of invoking
          */
         @Override
         public Object invoke(@Nullable Object target, @Nullable Object... args) {
@@ -136,12 +136,12 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
      * @author tangcent
      * @since 2.0.0
      */
-    public abstract static class ReflectAsmFieldInvoker implements MethodInvoker {
+    public abstract static class AbstractReflectAsmFieldInvoker implements MethodInvoker {
 
         private final FieldAccess fieldAccess;
         private final int fieldIndex;
 
-        protected ReflectAsmFieldInvoker(FieldAccess fieldAccess, int fieldIndex) {
+        protected AbstractReflectAsmFieldInvoker(FieldAccess fieldAccess, int fieldIndex) {
             this.fieldAccess = fieldAccess;
             this.fieldIndex = fieldIndex;
         }
@@ -158,17 +158,17 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
          * @param fieldIndex field index
          * @param target target
          * @param args args
-         * @return result of invoke
+         * @return result of invoking
          */
         protected abstract Object invoke(FieldAccess fieldAccess, int fieldIndex, @Nullable Object target, @Nullable Object... args);
 
         /**
-         * An implementation of the {@link ReflectAsmFieldInvoker} for getter.
+         * An implementation of the {@link AbstractReflectAsmFieldInvoker} for getter.
          *
          * @author tangcent
          * @since 2.0.0
          */
-        public static class Getter extends ReflectAsmFieldInvoker {
+        public static class Getter extends AbstractReflectAsmFieldInvoker {
             public Getter(FieldAccess fieldAccess, int fieldIndex) {
                 super(fieldAccess, fieldIndex);
             }
@@ -179,12 +179,12 @@ public class AsmReflectivePropertyOperator extends ReflectivePropertyOperator {
         }
 
         /**
-         * An implementation of the {@link ReflectAsmFieldInvoker} for setter.
+         * An implementation of the {@link AbstractReflectAsmFieldInvoker} for setter.
          *
          * @author tangcent
          * @since 2.0.0
          */
-        public static class Setter extends ReflectAsmFieldInvoker {
+        public static class Setter extends AbstractReflectAsmFieldInvoker {
             public Setter(FieldAccess fieldAccess, int fieldIndex) {
                 super(fieldAccess, fieldIndex);
             }

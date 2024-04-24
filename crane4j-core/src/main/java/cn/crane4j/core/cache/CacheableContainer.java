@@ -71,7 +71,7 @@ public class CacheableContainer<K> implements ContainerDelegate<K> {
     }
 
     /**
-     * Get current cache object, if current cache object is null or invalid,
+     * Get the current cache object, if the current cache object is null or invalid,
      * recreate it by cache manager which is specified in cache definition.
      *
      * @return current cache object

@@ -31,7 +31,6 @@ public class GeneralRedisCacheManagerTest {
     private static final TimeUnit TIME_UNIT = TimeUnit.MILLISECONDS;
 
     private RedisTemplate<String, Object> redisTemplate;
-    private GeneralRedisCacheManager<String, Object> cacheManager;
     private CacheObject<String> cache;
 
     @Before
@@ -50,7 +49,7 @@ public class GeneralRedisCacheManagerTest {
         redisTemplate.setValueSerializer(new StringRedisSerializer());
         redisTemplate.afterPropertiesSet();
 
-        cacheManager = new GeneralRedisCacheManager<>(redisTemplate, (cacheName, key) -> resolveCacheKey(key), Function.identity());
+        GeneralRedisCacheManager<String, Object> cacheManager = new GeneralRedisCacheManager<>(redisTemplate, (cacheName, key) -> resolveCacheKey(key), Function.identity());
         cache = cacheManager.createCache("test", EXPIRE_TIME, TIME_UNIT);
     }
 

@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  * @see MethodContainerFactory
  */
 @Slf4j
-public class ContainerMethodAnnotationProcessor extends ContainerMethodSupport {
+public class ContainerMethodAnnotationProcessor extends AbstractContainerMethodSupport {
 
     /**
      * annotation finder

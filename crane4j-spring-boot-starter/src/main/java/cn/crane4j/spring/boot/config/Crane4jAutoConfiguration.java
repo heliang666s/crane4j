@@ -3,10 +3,10 @@ package cn.crane4j.spring.boot.config;
 import cn.crane4j.annotation.ContainerConstant;
 import cn.crane4j.annotation.ContainerEnum;
 import cn.crane4j.annotation.ContainerMethod;
+import cn.crane4j.core.cache.AbstractMapCacheManager;
 import cn.crane4j.core.cache.CacheDefinition;
 import cn.crane4j.core.cache.CacheManager;
 import cn.crane4j.core.cache.GuavaCacheManager;
-import cn.crane4j.core.cache.MapCacheManager;
 import cn.crane4j.core.condition.ConditionOnContainerParser;
 import cn.crane4j.core.condition.ConditionOnExpressionParser;
 import cn.crane4j.core.condition.ConditionOnPropertyNotEmptyParser;
@@ -227,10 +227,10 @@ public class Crane4jAutoConfiguration {
     }
 
     @Primary
-    @ConditionalOnMissingBean(MapCacheManager.class)
+    @ConditionalOnMissingBean(AbstractMapCacheManager.class)
     @Bean
-    public MapCacheManager mapCacheManager() {
-        return MapCacheManager.newWeakConcurrentMapCacheManager();
+    public AbstractMapCacheManager mapCacheManager() {
+        return AbstractMapCacheManager.newWeakConcurrentMapCacheManager();
     }
 
     @ConditionalOnMissingBean(GuavaCacheManager.class)
@@ -762,7 +762,7 @@ public class Crane4jAutoConfiguration {
         private Set<String> operateEntityPackages = new LinkedHashSet<>();
 
         /**
-         * Whether to enable automatic filling of aspect with method parameters.
+         * Whether to enable automatic filling of an aspect with method parameters.
          *
          * @see MethodArgumentAutoOperateAdvisor
          */
@@ -813,7 +813,7 @@ public class Crane4jAutoConfiguration {
             private Long expireTime;
 
             /**
-             * The time unit of expire time,
+             * The time unit of expiry time,
              * default is {@link TimeUnit#MILLISECONDS}
              */
             private TimeUnit timeUnit = TimeUnit.MILLISECONDS;

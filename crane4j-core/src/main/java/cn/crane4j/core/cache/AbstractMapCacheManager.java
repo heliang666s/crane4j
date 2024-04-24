@@ -15,14 +15,14 @@ import java.util.concurrent.TimeUnit;
  * @author huangchengxing
  * @since 2.4.0
  */
-public abstract class MapCacheManager extends AbstractCacheManager {
+public abstract class AbstractMapCacheManager extends AbstractCacheManager {
 
     /**
      * Create a {@link ConcurrentHashMapCacheManager} instance.
      *
      * @return {@link ConcurrentHashMapCacheManager} instance
      */
-    public static MapCacheManager newConcurrentHashMapCacheManager() {
+    public static AbstractMapCacheManager newConcurrentHashMapCacheManager() {
         return new ConcurrentHashMapCacheManager();
     }
 
@@ -31,7 +31,7 @@ public abstract class MapCacheManager extends AbstractCacheManager {
      *
      * @return {@link WeakConcurrentMapCacheManager} instance
      */
-    public static MapCacheManager newWeakConcurrentMapCacheManager() {
+    public static AbstractMapCacheManager newWeakConcurrentMapCacheManager() {
         return new WeakConcurrentMapCacheManager();
     }
 
@@ -134,7 +134,7 @@ public abstract class MapCacheManager extends AbstractCacheManager {
      * @author huangchengxing
      * @since 2.4.0
      */
-    public static class ConcurrentHashMapCacheManager extends MapCacheManager {
+    public static class ConcurrentHashMapCacheManager extends AbstractMapCacheManager {
         @Override
         protected <K> Map<K, Object> createMap() {
             return new ConcurrentHashMap<>(16);
@@ -148,7 +148,7 @@ public abstract class MapCacheManager extends AbstractCacheManager {
      * @author huangchengxing
      * @since 2.4.0
      */
-    public static class WeakConcurrentMapCacheManager extends MapCacheManager {
+    public static class WeakConcurrentMapCacheManager extends AbstractMapCacheManager {
 
         /**
          * Get the component name.

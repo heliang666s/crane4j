@@ -1,18 +1,18 @@
 package cn.crane4j.extension.spring;
 
-import cn.crane4j.core.cache.MapCacheManager;
+import cn.crane4j.core.cache.AbstractMapCacheManager;
 import org.springframework.util.ConcurrentReferenceHashMap;
 
 import java.util.Map;
 
 /**
- * An implementation of the {@link MapCacheManager} that
+ * An implementation of the {@link AbstractMapCacheManager} that
  * creates a cache instance what stores data in the {@link ConcurrentReferenceHashMap}.
  *
  * @author huangchengxing
  * @since 2.8.0
  */
-public class SoftConcurrentMapCacheManager extends MapCacheManager {
+public class SoftConcurrentMapCacheManager extends AbstractMapCacheManager {
 
     /**
      * Create a {@link Map} instance.

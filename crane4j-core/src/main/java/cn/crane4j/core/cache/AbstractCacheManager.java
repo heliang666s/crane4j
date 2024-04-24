@@ -76,7 +76,7 @@ public abstract class AbstractCacheManager implements CacheManager {
     }
 
     /**
-     * Clear all cache.
+     * Clear all caches.
      */
     @Override
     public void clearAll() {

@@ -103,11 +103,12 @@ public class TypeHierarchyBeanOperationParser implements BeanOperationParser {
     /**
      * registered operation annotation resolvers.
      */
-    protected List<OperationAnnotationHandler> operationAnnotationHandlers = new ArrayList<>(5);
+    protected final List<OperationAnnotationHandler> operationAnnotationHandlers = new ArrayList<>(5);
 
     /**
      * The thread that is currently parsing the configuration.
      */
+    @SuppressWarnings("java:S3077")
     private volatile Thread currentParsingThread;
 
     /**

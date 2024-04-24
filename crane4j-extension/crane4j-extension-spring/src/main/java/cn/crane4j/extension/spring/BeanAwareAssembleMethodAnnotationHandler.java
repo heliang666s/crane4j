@@ -48,7 +48,7 @@ public class BeanAwareAssembleMethodAnnotationHandler extends AssembleMethodAnno
     }
 
     /**
-     * Resolve target type.
+     * Resolve target class.
      *
      * @param annotation annotation
      * @return target type

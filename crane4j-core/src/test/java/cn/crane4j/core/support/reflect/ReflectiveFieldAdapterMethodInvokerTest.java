@@ -1,28 +1,23 @@
 package cn.crane4j.core.support.reflect;
 
 import cn.crane4j.core.support.MethodInvoker;
+import lombok.Getter;
+import lombok.Setter;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 import org.junit.Test;
 
 import java.lang.reflect.Field;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
 
 /**
  * test for {@link ReflectiveFieldAdapterMethodInvoker}
  */
 public class ReflectiveFieldAdapterMethodInvokerTest {
 
+    @Setter
+    @Getter
     private static class MyClass {
         private int value;
-
-        public int getValue() {
-            return value;
-        }
-
-        public void setValue(int value) {
-            this.value = value;
-        }
     }
 
     @Test

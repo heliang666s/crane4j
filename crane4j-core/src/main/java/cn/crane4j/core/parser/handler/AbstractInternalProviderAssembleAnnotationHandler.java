@@ -45,7 +45,7 @@ import java.util.Comparator;
  * @see ConfigurableContainerProvider
  * @since 2.2.0
  */
-public abstract class InternalProviderAssembleAnnotationHandler<A extends Annotation>
+public abstract class AbstractInternalProviderAssembleAnnotationHandler<A extends Annotation>
     extends AbstractStandardAssembleAnnotationHandler<A> {
 
     public static final String INTERNAL_PROVIDER_SUFFIX = ".InternalProvider";
@@ -64,7 +64,7 @@ public abstract class InternalProviderAssembleAnnotationHandler<A extends Annota
      * @param globalConfiguration            global configuration
      * @param propertyMappingStrategyManager property mapping strategy manager
      */
-    protected InternalProviderAssembleAnnotationHandler(
+    protected AbstractInternalProviderAssembleAnnotationHandler(
         Class<A> annotationType, AnnotationFinder annotationFinder,
         @NonNull Comparator<KeyTriggerOperation> operationComparator,
         Crane4jGlobalConfiguration globalConfiguration,

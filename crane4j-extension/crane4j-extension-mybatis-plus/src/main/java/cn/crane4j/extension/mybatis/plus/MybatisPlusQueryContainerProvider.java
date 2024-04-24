@@ -7,7 +7,7 @@ import cn.crane4j.core.exception.Crane4jException;
 import cn.crane4j.core.support.Crane4jGlobalConfiguration;
 import cn.crane4j.core.support.MethodInvoker;
 import cn.crane4j.core.support.container.MethodInvokerContainerCreator;
-import cn.crane4j.core.support.container.query.NamespaceResolvableQueryContainerProvider;
+import cn.crane4j.core.support.container.query.AbstractNamespaceResolvableQueryContainerProvider;
 import cn.crane4j.core.util.CollectionUtils;
 import cn.crane4j.core.util.ReflectUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -41,7 +41,8 @@ import java.util.stream.Collectors;
  *
  * @author huangchengxing
  */
-public class MybatisPlusQueryContainerProvider extends NamespaceResolvableQueryContainerProvider<BaseMapper<?>> {
+public class MybatisPlusQueryContainerProvider extends
+    AbstractNamespaceResolvableQueryContainerProvider<BaseMapper<?>> {
 
     /**
      * Factory for creating {@link BaseMapper} instance if it is not registered.

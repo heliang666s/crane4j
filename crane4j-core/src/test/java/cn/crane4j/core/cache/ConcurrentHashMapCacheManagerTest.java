@@ -5,7 +5,7 @@ import org.junit.Assert;
 import java.util.concurrent.TimeUnit;
 
 /**
- * test for {@link MapCacheManager}
+ * test for {@link AbstractMapCacheManager}
  *
  * @author huangchengxing
  */
@@ -13,7 +13,7 @@ public class ConcurrentHashMapCacheManagerTest extends BaseCacheManagerTest {
 
     @Override
     protected void initManager() {
-        cacheManager = MapCacheManager.newConcurrentHashMapCacheManager();
+        cacheManager = AbstractMapCacheManager.newConcurrentHashMapCacheManager();
         cache = cacheManager.createCache("test", -1L, TimeUnit.MILLISECONDS);
         Assert.assertEquals(cacheManager.getClass().getSimpleName(), cacheManager.getName());
     }

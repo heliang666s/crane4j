@@ -159,7 +159,7 @@ public class ClassUtils {
     }
 
     /**
-     * <p>Convert package path to resource path.<br />
+     * <p>Convert the package path to the resource path.<br />
      * eg: {@code cn.crane4j.core.util.ClassUtils -> cn/crane4j/core/util/ClassUtils}
      *
      * @param packagePath class path

@@ -38,7 +38,7 @@ import java.lang.annotation.Target;
  *     private List<T> fooList;
  * }
  * }</pre>
- * During the subsequent processing, the actual type of the object will be dynamically inferred,
+ * During the later processing, the actual type of the object will be dynamically inferred,
  * but there will be additional performance consumption for the fixed type.
  *
  * @author huangchengxing

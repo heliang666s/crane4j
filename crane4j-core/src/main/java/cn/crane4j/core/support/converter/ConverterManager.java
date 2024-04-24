@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.BiFunction;
 
 /**
- * A manager for converter what convert target type to result type.
+ * A manager for converter what convert target type to the result type.
  *
  * @author huangchengxing
  * @see ParameterConvertibleMethodInvoker
@@ -38,7 +38,7 @@ public interface ConverterManager {
     <T, R> BiFunction<T, R, R> getConverter(Class<T> targetType, Class<R> resultType);
 
     /**
-     * Convert target to result type through converter, if converter is null, return default result value.
+     * Convert target to the result type through converter if converter is null, return default result value.
      *
      * @param target     target object
      * @param resultType result type
@@ -61,7 +61,7 @@ public interface ConverterManager {
     }
 
     /**
-     * Convert source to target type through converter, if converter is null, return null.
+     * Convert a source to the target type through converter if converter is null, return null.
      *
      * @param target     target object
      * @param resultType result type

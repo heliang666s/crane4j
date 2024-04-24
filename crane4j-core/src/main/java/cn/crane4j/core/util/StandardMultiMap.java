@@ -2,7 +2,11 @@ package cn.crane4j.core.util;
 
 import lombok.RequiredArgsConstructor;
 
-import java.util.*;
+import java.util.AbstractMap;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -50,6 +54,7 @@ public class StandardMultiMap<K, V, C extends Collection<V>> implements MultiMap
      * @param o key
      * @return whether the map contains the specified key
      */
+    @SuppressWarnings("all")
     @Override
     public boolean containsKey(Object o) {
         return rawMap.containsKey(o);
@@ -94,6 +99,7 @@ public class StandardMultiMap<K, V, C extends Collection<V>> implements MultiMap
      * @param o key
      * @return all values of the specified key
      */
+    @SuppressWarnings("all")
     @Override
     public Collection<V> removeAll(Object o) {
         C values = rawMap.remove(o);

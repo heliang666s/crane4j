@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * A condition what apply the operation only when the specified property exists and its value not empty.
+ * A condition what apply the operation only when the specified property exists and its value not empties.
  *
  * @author huangchengxing
  * @see cn.crane4j.core.condition.ConditionOnPropertyNotEmptyParser

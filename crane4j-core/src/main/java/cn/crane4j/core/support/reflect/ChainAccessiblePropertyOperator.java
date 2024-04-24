@@ -72,7 +72,7 @@ public class ChainAccessiblePropertyOperator implements PropertyOperator {
                     return null;
                 }
                 targetProp = splitPropertyChain[deep];
-                // go to next level
+                // go to the next level
                 target = delegate.readProperty(target.getClass(), target, targetProp);
                 deep++;
             }

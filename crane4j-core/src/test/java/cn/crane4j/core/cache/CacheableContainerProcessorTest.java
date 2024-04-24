@@ -56,12 +56,12 @@ public class CacheableContainerProcessorTest {
         Assert.assertEquals(TimeUnit.SECONDS, definition.getTimeUnit());
     }
 
+    @Getter
     @ContainerCache(
         expirationTime = 1000L,
         timeUnit = TimeUnit.SECONDS
     )
     private static class TestContainer implements Container<Object> {
-        @Getter
         private final String namespace = "test";
         @Override
         public Map<Object, ?> get(Collection<Object> keys) {

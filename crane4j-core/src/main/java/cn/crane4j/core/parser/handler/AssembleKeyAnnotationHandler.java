@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
  * @author huangchengxing
  * @see AssembleKey
  */
-public class AssembleKeyAnnotationHandler extends InternalProviderAssembleAnnotationHandler<AssembleKey> {
+public class AssembleKeyAnnotationHandler extends AbstractInternalProviderAssembleAnnotationHandler<AssembleKey> {
 
     /**
      * Registered value mapper providers.

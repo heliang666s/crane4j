@@ -176,7 +176,7 @@ public interface Crane4jGlobalConfiguration
      *
      * @param name cache factory name
      * @return cache factory
-     * @throws IllegalArgumentException if cache factory is not found by name
+     * @throws IllegalArgumentException if name does not find cache factory
      * @since 2.4.0
      */
     @NonNull CacheManager getCacheManager(String name);

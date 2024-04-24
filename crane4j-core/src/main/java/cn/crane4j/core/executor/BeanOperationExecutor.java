@@ -41,7 +41,7 @@ public interface BeanOperationExecutor extends NamedComponent {
      *
      * @param targets targets
      * @param operations operations to be performed
-     * @param filter operation filter, which can filter some operations based on operation key, group and other attributes
+     * @param filter operation filter, which can filter some operations based on the operation key, group and other attributes
      */
     default void execute(Collection<?> targets, BeanOperations operations, Predicate<? super KeyTriggerOperation> filter) {
         execute(targets, operations, () -> filter);

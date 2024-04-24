@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  * <p>If cannot determine the {@link BeanOperations} for the annotated element,
  * we can make {@link #beanOperations} is null, in this case, the {@link #parser} must not be null.
  * When execute the {@link #execute(Object)} method,
- * the {@link #parser} will be used to get actual {@link BeanOperations} for the invoke data.
+ * the {@link #parser} will be used to get actual {@link BeanOperations} for the invoked data.
  *
  * @author huangchengxing
  * @see AutoOperateAnnotatedElementResolver

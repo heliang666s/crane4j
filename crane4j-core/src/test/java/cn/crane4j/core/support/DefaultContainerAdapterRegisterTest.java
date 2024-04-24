@@ -18,7 +18,7 @@ import java.util.Map;
  */
 public class DefaultContainerAdapterRegisterTest {
 
-    private DefaultContainerAdapterRegister register = new DefaultContainerAdapterRegister();
+    private final DefaultContainerAdapterRegister register = new DefaultContainerAdapterRegister();
 
     @Test
     public void testRegisterAdapter() {

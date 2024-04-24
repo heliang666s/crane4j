@@ -83,7 +83,7 @@ public abstract class AbstractBeanOperationExecutor implements BeanOperationExec
      * <p>process target num of each batch when executing an operation.<br />
      * for example, if we have 1000 targets and batch size is 100,
      * and each target has 3 operations, so we will get 3000 executions.<br />
-     * it's maybe useful when using asynchronous executor to process large number of targets.
+     * it's maybe useful when using asynchronous executor to process a large number of targets.
      *
      * @since 2.5.0
      */

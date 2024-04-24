@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  * <p>Marker a parameter as dynamic container in execution.<br />
- * support following types of parameter:
+ * support the following types of parameter:
  * <ul>
  *     <li>{@link cn.crane4j.core.container.Container}</li>
  *     <li>{@link java.util.Map}</li>

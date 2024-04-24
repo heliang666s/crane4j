@@ -24,7 +24,7 @@ public interface DisassembleOperation extends KeyTriggerOperation {
     Class<?> getSourceType();
 
     /**
-     * Get the operation configuration of nested object.
+     * Get the operation configuration of the nested object.
      *
      * @param internalBean internal bean
      * @return operation

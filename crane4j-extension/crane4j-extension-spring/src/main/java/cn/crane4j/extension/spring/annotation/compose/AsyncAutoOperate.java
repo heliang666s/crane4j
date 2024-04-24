@@ -48,14 +48,14 @@ public @interface AsyncAutoOperate {
      * when annotated on method.<br/>
      * When this option is true, {@link #type()} will be ignored.
      *
-     * @return true if resolve from current element, otherwise false
+     * @return true if resolve from the current element, otherwise false
      * @since 2.7.0
      */
     boolean resolveOperationsFromCurrentElement() default false;
 
     /**
      * <p>When the return value is a wrapper class,
-     * we can specify to obtain the data set to be processed
+     * we can specify to obtain the dataset to be processed
      * from the specific field of the wrapper class, and then process it。<br />
      *
      * <p>This configuration is generally used to process the method

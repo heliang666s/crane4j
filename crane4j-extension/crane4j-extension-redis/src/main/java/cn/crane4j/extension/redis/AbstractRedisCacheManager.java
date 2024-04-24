@@ -73,7 +73,7 @@ public abstract class AbstractRedisCacheManager<K, V> extends AbstractCacheManag
     protected abstract V resolveCacheValue(Object value);
 
     /**
-     * Clear all cache value for specified cache object.
+     * Clear all cache value for a specified cache object.
      *
      * @param cacheName cache name
      */
@@ -141,7 +141,7 @@ public abstract class AbstractRedisCacheManager<K, V> extends AbstractCacheManag
         }
 
         /**
-         * Get all cache according to the key values.
+         * Get all caches according to the key values.
          *
          * @param keys keys
          * @return cache value

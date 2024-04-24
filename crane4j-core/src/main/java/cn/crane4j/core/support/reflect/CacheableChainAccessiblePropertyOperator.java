@@ -137,7 +137,7 @@ public class CacheableChainAccessiblePropertyOperator extends ChainAccessiblePro
                 if (Objects.isNull(target)) {
                     return null;
                 }
-                // go to next level
+                // go to the next level
                 targetProp = splitPropertyChain[deep];
                 MethodInvoker getter = delegate.findGetter(target.getClass(), targetProp);
                 if (Objects.isNull(getter)) {

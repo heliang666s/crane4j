@@ -157,7 +157,6 @@ public interface MultiMap<K, V> {
      *
      * @param action action
      */
-    @SuppressWarnings("unchecked")
     default void forEach(BiConsumer<? super K,? super V> action) {
         asMap().forEach((k, vs) -> vs.forEach(v -> action.accept(k, v)));
     }

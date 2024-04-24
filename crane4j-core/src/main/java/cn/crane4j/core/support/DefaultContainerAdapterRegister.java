@@ -44,7 +44,7 @@ public class DefaultContainerAdapterRegister implements ContainerAdapterRegister
     }
 
     /**
-     * Get target type.
+     * Get target class.
      *
      * @param targetType target type
      * @return {@link Adapter} instance.

@@ -14,13 +14,13 @@ import java.util.function.BiFunction;
  * @author huangchengxing
  * @since 1.3.0
  */
+@Getter
 @RequiredArgsConstructor
 public class SpringConverterManager implements ConverterManager {
 
     /**
      * conversion service.
      */
-    @Getter
     private final ConversionService conversionService;
 
     /**

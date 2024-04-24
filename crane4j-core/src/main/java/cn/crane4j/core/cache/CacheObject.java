@@ -45,7 +45,7 @@ public interface CacheObject<K> {
     Object get(K key);
 
     /**
-     * Get all cache according to the key values.
+     * Get all caches according to the key values.
      *
      * @param keys keys
      * @return cache value

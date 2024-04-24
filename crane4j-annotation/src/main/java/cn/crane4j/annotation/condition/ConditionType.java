@@ -21,5 +21,5 @@ public enum ConditionType {
     /**
      * at least one condition must be satisfied.
      */
-    OR;
+    OR
 }

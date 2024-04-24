@@ -32,7 +32,7 @@ import java.util.Set;
  */
 @Slf4j
 public class AssembleEnumAnnotationHandler
-    extends InternalProviderAssembleAnnotationHandler<AssembleEnum> {
+    extends AbstractInternalProviderAssembleAnnotationHandler<AssembleEnum> {
 
     private final PropertyOperator propertyOperator;
 

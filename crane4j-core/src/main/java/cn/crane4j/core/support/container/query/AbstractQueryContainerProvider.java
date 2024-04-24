@@ -96,7 +96,7 @@ public abstract class AbstractQueryContainerProvider<T> implements ContainerProv
     @Nullable
     @Override
     public <K> Container<K> getContainer(String namespace) {
-        // is a heavy operation, but manager will cache it
+        // is a heavy operation, but the manager will cache it
         return (Container<K>) createQueryContainer(namespace);
     }
 
@@ -106,7 +106,7 @@ public abstract class AbstractQueryContainerProvider<T> implements ContainerProv
      * the table columns specified in the corresponding property.
      *
      * @param name mapper name
-     * @param keyProperty key field name for query, if it is empty, it defaults to the specified key field
+     * @param keyProperty key field name for a query, if it is empty, it defaults to the specified key field
      * @param properties fields to query, if it is empty, all table columns will be queried by default.
      * @return container
      */
@@ -120,7 +120,7 @@ public abstract class AbstractQueryContainerProvider<T> implements ContainerProv
      * Determines the namespace of container.
      *
      * @param name mapper name
-     * @param keyProperty key field name for query, if it is empty, it defaults to the specified key field
+     * @param keyProperty key field name for a query, if it is empty, it defaults to the specified key field
      * @param properties fields to query, if it is empty, all table columns will be queried by default.
      * @return namespace
      * @see #resolveQueryInfo(String)
@@ -273,7 +273,7 @@ public abstract class AbstractQueryContainerProvider<T> implements ContainerProv
     public interface QueryInfo {
 
         /**
-         * Get repository name for query.
+         * Get repository name for a query.
          *
          * @return repository name
          * @see #registerRepository
@@ -281,7 +281,7 @@ public abstract class AbstractQueryContainerProvider<T> implements ContainerProv
         String getRepository();
 
         /**
-         * Get key property for query.
+         * Get key property for a query.
          *
          * @return key property
          */

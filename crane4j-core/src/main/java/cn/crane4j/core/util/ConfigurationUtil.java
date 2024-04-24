@@ -95,7 +95,7 @@ public class ConfigurationUtil {
      *
      * @param source source
      * @param defaultValue default id
-     * @return name if source is field, method or parameter, otherwise return defaultValue
+     * @return name if the source is field, method or parameter, otherwise return defaultValue
      */
     public static String getElementIdentifier(AnnotatedElement source, String defaultValue) {
         if (StringUtils.isNotEmpty(defaultValue)) {

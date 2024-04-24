@@ -27,7 +27,7 @@ import java.util.Map;
  *         this behavior may not affect the corresponding {@link ContainerDefinition};
  *     </li>
  * </ul>
- * By extending the {@link ContainerLifecycleProcessor}(for all container)
+ * By extending the {@link ContainerLifecycleProcessor}(for all containers)
  * or implementing {@link Lifecycle}(for specified container class),
  * users can perceive these specific stages and perform modifications and replacement operations on the container.
  *
@@ -37,7 +37,7 @@ import java.util.Map;
  * usage, and destruction process.<br />
  * This allows the associated {@link ContainerLifecycleProcessor} to fully handle the container's lifecycle.
  * <p>When delegating the container to the manager,
- * you have the option to directly register an instance or a factory method used to create the instance with the manager.
+ * you can directly register an instance or a factory method used to create the instance with the manager.
  * Alternatively, you can register a {@link ContainerProvider},
  * allowing the container to automatically complete the registration logic when necessary,
  * similar to the internal BeanFactory in Spring, where beans are created using FactoryBean.

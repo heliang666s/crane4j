@@ -31,11 +31,10 @@ import java.util.Set;
 public class AssembleAnnotationHandlerTest {
 
     private AssembleAnnotationHandler annotationHandler;
-    private Crane4jGlobalConfiguration configuration;
 
     @Before
     public void init() {
-        configuration = SimpleCrane4jGlobalConfiguration.create();
+        Crane4jGlobalConfiguration configuration = SimpleCrane4jGlobalConfiguration.create();
         PropertyMappingStrategyManager propertyMappingStrategyManager = new SimplePropertyMappingStrategyManager();
         propertyMappingStrategyManager.addPropertyMappingStrategy(OverwriteMappingStrategy.INSTANCE);
         this.annotationHandler = new AssembleAnnotationHandler(

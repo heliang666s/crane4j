@@ -96,7 +96,7 @@ public class Crane4jMybatisPlusAutoConfiguration {
         private Set<String> includes = new HashSet<>();
 
         /**
-         * mapper not allowed to be scanned and registered.
+         * mapper isn't allowed to be scanned and registered.
          */
         private Set<String> excludes = new HashSet<>();
 

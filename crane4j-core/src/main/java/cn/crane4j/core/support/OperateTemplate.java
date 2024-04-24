@@ -30,7 +30,8 @@ public class OperateTemplate {
     private final BeanOperationExecutor defaultExecutor;
 
     /**
-     * Type parser. if the type of object to be operated is not specified, obtain the type through the parser.
+     * Type parser. <br/>
+     * If the type of object to be operated is not specified, obtain the type through the parser.
      */
     private final TypeResolver typeResolver;
 

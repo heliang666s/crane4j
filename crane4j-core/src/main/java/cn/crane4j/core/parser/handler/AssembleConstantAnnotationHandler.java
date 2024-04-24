@@ -27,7 +27,8 @@ import java.util.Set;
  * @see AssembleConstant
  * @since 2.6.0
  */
-public class AssembleConstantAnnotationHandler extends InternalProviderAssembleAnnotationHandler<AssembleConstant> {
+public class AssembleConstantAnnotationHandler extends
+    AbstractInternalProviderAssembleAnnotationHandler<AssembleConstant> {
 
     /**
      * Create an {@link AbstractStandardAssembleAnnotationHandler} instance.

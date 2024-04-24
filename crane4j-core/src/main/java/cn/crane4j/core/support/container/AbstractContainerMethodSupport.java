@@ -25,19 +25,19 @@ import java.util.stream.Collectors;
  * @see ContainerMethodAnnotationProcessor
  */
 @Slf4j
-public abstract class ContainerMethodSupport {
+public abstract class AbstractContainerMethodSupport {
 
     /**
      * method container factories
      */
-    protected List<MethodContainerFactory> methodContainerFactories;
+    protected final List<MethodContainerFactory> methodContainerFactories;
 
     /**
-     * Create a {@link ContainerMethodSupport} instance.
+     * Create a {@link AbstractContainerMethodSupport} instance.
      *
      * @param methodContainerFactories method container factories
      */
-    protected ContainerMethodSupport(Collection<MethodContainerFactory> methodContainerFactories) {
+    protected AbstractContainerMethodSupport(Collection<MethodContainerFactory> methodContainerFactories) {
         this.methodContainerFactories = methodContainerFactories.stream()
             .sorted(Crane4jGlobalSorter.comparator())
             .collect(Collectors.toList());
@@ -74,7 +74,7 @@ public abstract class ContainerMethodSupport {
     }
 
     /**
-     * <p>Find most matched method by given annotation in the method group,
+     * <p>Find the most matched method by given annotation in the method group,
      * the method with the most matched parameter types will be returned.<br/>
      *
      * @param methods methods
@@ -104,7 +104,7 @@ public abstract class ContainerMethodSupport {
     }
 
     /**
-     * <p>Find most matched method by given method name and param types,
+     * <p>Find the most matched method by given method name and param types,
      * the method with the most matched parameter types will be returned.<br/>
      * If there are multiple methods with the same number of matched parameter types or no matched method,
      * the first one will be returned.
@@ -150,14 +150,16 @@ public abstract class ContainerMethodSupport {
             Class<?>[] actualTypes = curr.getParameterTypes();
             int actualCount = actualTypes.length;
             if (actualCount < expectedCount) {
-                matchCounts[i] = -1; // is not matched
+                // is not matched
+                matchCounts[i] = -1;
                 continue;
             }
             // record the number of matched parameter types
             int matchCount = 0;
             for (int j = 0; j < expectedCount; j++) {
                 if (!expectedTypes[j].isAssignableFrom(actualTypes[j])) {
-                    matchCounts[i] = -1; // is not matched
+                    // is not matched
+                    matchCounts[i] = -1;
                     break;
                 }
                 matchCount++;

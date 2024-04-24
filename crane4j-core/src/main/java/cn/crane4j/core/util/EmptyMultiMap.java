@@ -146,7 +146,7 @@ public class EmptyMultiMap<K, V> implements MultiMap<K, V> {
     }
 
     /**
-     * Get java map of the multimap, the returned map is modifiable.
+     * Get a java map of the multimap, the returned map is modifiable.
      *
      * @return java map of the multi map
      */

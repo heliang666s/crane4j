@@ -24,6 +24,7 @@ public class Lazy<T> implements Supplier<T> {
      * @return the value
      */
     @SuppressWarnings("unchecked")
+    @Override
     public T get() {
         if (value == UNINITIALIZED_VALUE) {
             synchronized (this) {

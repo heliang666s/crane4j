@@ -12,8 +12,8 @@ import java.util.concurrent.TimeUnit;
  * @author huangchengxing
  * @see CacheObject
  * @see GuavaCacheManager
- * @see MapCacheManager#newWeakConcurrentMapCacheManager()
- * @see MapCacheManager#newConcurrentHashMapCacheManager()
+ * @see AbstractMapCacheManager#newWeakConcurrentMapCacheManager()
+ * @see AbstractMapCacheManager#newConcurrentHashMapCacheManager()
  * @since 2.4.0
  */
 public interface CacheManager extends NamedComponent {
@@ -56,7 +56,7 @@ public interface CacheManager extends NamedComponent {
     void removeCache(String name);
 
     /**
-     * Clear all cache.
+     * Clear all caches.
      */
     void clearAll();
 }

@@ -3,7 +3,12 @@ package cn.crane4j.core.util;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 /**
  * test for {@link StandardMultiMap}
@@ -68,9 +73,7 @@ public class StandardMultiMapTest {
         multiMap.putAll("a", Arrays.asList("1", "2"));
         multiMap.putAll("b", Arrays.asList("3", "4"));
         List<String> values = new ArrayList<>();
-        multiMap.forEach((k, v) -> {
-            values.add(v);
-        });
+        multiMap.forEach((k, v) -> values.add(v));
         Assert.assertEquals(Arrays.asList("1", "2", "3", "4"), values);
 
         MultiMap<String, String> multiMap2 = MultiMap.linkedHashMultimap();

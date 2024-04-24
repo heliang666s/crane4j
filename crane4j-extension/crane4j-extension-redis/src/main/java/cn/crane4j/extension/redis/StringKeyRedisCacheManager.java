@@ -15,6 +15,7 @@ import java.util.Set;
  *
  * @author huangchengxing
  */
+@Setter
 @Slf4j
 public class StringKeyRedisCacheManager extends AbstractRedisCacheManager<String, Object> {
 
@@ -22,7 +23,6 @@ public class StringKeyRedisCacheManager extends AbstractRedisCacheManager<String
      * Global prefix for all cache keys.
      */
     @NonNull
-    @Setter
     private String globalPrefix = "crane4j:cache:";
 
     /**
@@ -31,7 +31,6 @@ public class StringKeyRedisCacheManager extends AbstractRedisCacheManager<String
      * 
      * <p>It's a dangerous operation, please use it carefully.
      */
-    @Setter
     private boolean enableClearCache = false;
 
     public StringKeyRedisCacheManager(@NonNull RedisTemplate<String, Object> redisTemplate) {

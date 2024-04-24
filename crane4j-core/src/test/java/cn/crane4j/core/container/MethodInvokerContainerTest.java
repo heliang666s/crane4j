@@ -79,6 +79,7 @@ public class MethodInvokerContainerTest {
         Assert.assertTrue(data.isEmpty());
     }
 
+    @SuppressWarnings("unchecked")
     @Test
     public void getWhenSingle() {
         MethodInvokerContainer container = MethodInvokerContainer.singleKey(

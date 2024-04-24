@@ -23,21 +23,21 @@ import java.lang.annotation.Target;
 public @interface AssembleMethod {
 
     /**
-     * Class of target type.
+     * Class of target.
      *
      * @return class
      */
     Class<?> targetType() default Object.class;
 
     /**
-     * Bean name, or Fully qualified name of target type
+     * Bean name, or Fully qualified name of target class
      *
      * @return class full name
      */
     String target() default "";
 
     /**
-     * Method which will be used to obtain the data source object.
+     * The method which will be used to obtain the data source object.
      *
      * @return annotation
      */

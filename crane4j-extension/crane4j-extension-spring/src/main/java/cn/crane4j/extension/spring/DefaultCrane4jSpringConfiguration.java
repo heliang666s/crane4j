@@ -1,7 +1,7 @@
 package cn.crane4j.extension.spring;
 
+import cn.crane4j.core.cache.AbstractMapCacheManager;
 import cn.crane4j.core.cache.GuavaCacheManager;
-import cn.crane4j.core.cache.MapCacheManager;
 import cn.crane4j.core.condition.ConditionOnContainerParser;
 import cn.crane4j.core.condition.ConditionOnExpressionParser;
 import cn.crane4j.core.condition.ConditionOnPropertyNotEmptyParser;
@@ -162,8 +162,8 @@ public class DefaultCrane4jSpringConfiguration implements SmartInitializingSingl
 
     @Primary
     @Bean
-    public MapCacheManager mapCacheManager() {
-        return MapCacheManager.newWeakConcurrentMapCacheManager();
+    public AbstractMapCacheManager mapCacheManager() {
+        return AbstractMapCacheManager.newWeakConcurrentMapCacheManager();
     }
 
     @Bean

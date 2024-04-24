@@ -78,5 +78,5 @@ public enum MappingType {
      * <p>When using this type,
      * the type which specified by {@link ContainerMethod#resultType()} <strong>must be {@code Map} or java bean</strong>.
      */
-    ONE_TO_MANY;
+    ONE_TO_MANY
 }

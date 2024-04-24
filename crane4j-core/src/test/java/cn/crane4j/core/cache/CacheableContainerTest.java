@@ -26,7 +26,7 @@ public class CacheableContainerTest {
     @Before
     public void init() {
         container = new TestContainer();
-        cacheManager = MapCacheManager.newConcurrentHashMapCacheManager();
+        cacheManager = AbstractMapCacheManager.newConcurrentHashMapCacheManager();
         CacheDefinition cacheDefinition = new CacheDefinition.Impl(
             container.getNamespace(), cacheManager.getClass().getName(), -1L, TimeUnit.MILLISECONDS
         );
