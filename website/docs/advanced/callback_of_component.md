@@ -86,7 +86,7 @@ private static class Bean implements OperationAwareBean {
     public boolean supportOperation(String key) {
         // 若 nestedBean 为空，则不进行针对 nestedBean 属性的递归填充
         return !Objects.equals("nestedBean", key) 
-            || Objects.nonNull(this.nestedBean)
+            || Objects.nonNull(this.nestedBean);
     }
 
     @Override

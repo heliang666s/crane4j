@@ -72,7 +72,7 @@ Container<String> container = Containers.forEnum(Num.class, new SimpleAnnotation
 
 ## 3.批量扫描
 
-在 Spring 环境中，你可以通过**配置文件**或者**注解**配置扫描路径，批量的扫描并注册枚举。
+在 Spring 环境中，你可以通过**配置文件**或者**注解**配置扫描路径，批量地扫描并注册枚举。
 
 **通过配置文件**
 

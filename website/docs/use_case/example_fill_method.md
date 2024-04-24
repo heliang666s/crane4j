@@ -67,7 +67,7 @@ public class UserDAO {
   	@ContainerMethod(
       	namespace = "user", // 表明该数据源的命名空间为 user
       	resultType = User.class, // 该方法的返回值为 User
-      	resultKey = "id"， // 将 User 列表按 id 分组
+      	resultKey = "id", // 将 User 列表按 id 分组
       	type = MappingType.ONE_TO_ONE // 映射类型为一对一，即一个 UserInfo 对象对应一个 User 对象
     )
   	public List<User> listUsers(List<Integer> ids) {
@@ -133,9 +133,9 @@ public UserInfo {
       	method = @ContainerMethod(
           	bindMethod = "listUsers", // 绑定 listUsers 方法
             resultType = User.class, // 该方法的返回值为 User
-            resultKey = "id"， // 将 User 列表按 id 分组
+            resultKey = "id", // 将 User 列表按 id 分组
             type = MappingType.ONE_TO_ONE // 映射类型为一对一，即一个 UserInfo 对象对应一个 User 对象
-        )
+        ),
       	props = { // 配置属性映射
           	@Mapping(src = "name", ref = "userName"),
             @Mapping(src = "address", ref = "userAddress"),

@@ -2,7 +2,7 @@
 
 你了解了如何基于自动填充，在 `Controller` 方法返回后进行简单的填充。
 
-在本文的例子中，你可以结合一个填充起来比较麻烦的的订单列表查询的例子，进一步的了解：
+在本文的例子中，你可以结合一个填充起来比较麻烦的的订单列表查询的例子，进一步了解：
 
 + **选项式风格配置与组合式风格配置的使用方式与差异**；
 + **如何使用组合注解抽离并简化复杂配置**；
@@ -28,7 +28,7 @@ public class Order {
 
 @Data // 使用 lombok 生成 getter/setter 方法
 public class Item {
-    private id;
+    private Integer id;
     private String name;
     private String type;
 }
@@ -79,7 +79,7 @@ public List<Oder> listOrder(List<Integer> ids) {
         .map(Order::getCustomerId)
         .collect(Collectors.toList());
     List<Customer> customers = customerService.selectListByIds(customerIds);
-    Map<Integer, Customer> customerMap = customers.stream().
+    Map<Integer, Customer> customerMap = customers.stream()
         .collect(Collectors.toMap(Customer::getId, e -> e));
     orders.forEach(order -> {
         Integer customerId = foo.getCustomerId(); // 根据客户Id获取对应的客户名称、客户类型
@@ -94,10 +94,10 @@ public List<Oder> listOrder(List<Integer> ids) {
     Set<Integer> itemIds = orders.stream()
         .map(Order::getItems)
         .flatMap(Collection::stream)
-        .map(Item:getId)
+        .map(Item::getId)
         .collect(Collectors.toList());
     List<Item> items = itemService.selectListByIds(itemIds); // 查询商品信息，并按 id 分组
-    Map<Integer, Item> itemMap = items.stream().
+    Map<Integer, Item> itemMap = items.stream()
         .collect(Collectors.toMap(Item::getId, e -> e));
     orders.forEach(order -> {
         List<Item> itemsOfOrder = order.getItems();
@@ -107,7 +107,7 @@ public List<Oder> listOrder(List<Integer> ids) {
                 itemOfOrder.setName(item.getName());
                 itemOfOrder.setType(item.getType());
             }
-        })
+        });
     });
 }
 ~~~
@@ -116,7 +116,7 @@ public List<Oder> listOrder(List<Integer> ids) {
 
 ## 2.使用选项式风格配置
 
-你可以基于选项式风格的配置，通过 crane4j 更优雅的完成上述字段填充逻辑：
+你可以基于选项式风格的配置，通过 crane4j 更优雅地完成上述字段填充逻辑：
 
 ~~~java
 @Data
@@ -161,7 +161,7 @@ public class Item {
         },
         handlerType = ManyToManyAssembleOperationHandler.class // 多对多
     )
-    private id;
+    private Integer id;
     private String name;
     private String type;
 }
@@ -283,7 +283,7 @@ public @interface AssembleCustomer { }
 public @interface AssembleItem { }
 ~~~
 
-在将原本的注解封装为新的组合注解后，我们可以直接使用**组合注解**：
+在将原本的注解封装为一个新组合注解后，我们可以直接使用**组合注解**：
 
 ~~~java
 @Data
@@ -311,7 +311,7 @@ public class Item {
 
     // 3、填充关联商品信息
     @AssembleItem
-    private id;
+    private Integer id;
     private String name;
     private String type;
 }

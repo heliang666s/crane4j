@@ -21,11 +21,11 @@ public class Foo {
 此时，我们声明一个容器，该容器**入参为待填充的 `Foo` 集合本身，并返回按 `Foo` 对象分组的数据集**：
 
 ~~~java
-Container<Foo> objectContainer = Containers.forLambda("foo_info", fooList -> {
+Container<Foo> objectContainer = Containers.forLambda("foo_info", fooList -> 
     fooList.stream().collect(Collectors.toMap(
-    	foo -> foo, foo -> foo.getId() + "#" + foo.getCode();
+    	foo -> foo, foo -> foo.getId() + "#" + foo.getCode()
     ))
-});
+);
 ~~~
 
 :::warning

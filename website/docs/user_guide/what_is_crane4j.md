@@ -31,11 +31,11 @@ public List<Person> listPerson(List<Integer> ids) {
         Integer genderCode = person.getGenderCode();
         GenderEnum gender = genderMap.get(genderCode);
         person.setGenderName(gender.getName());
-    })
+    });
 }
 ~~~
 
-`listPerson` 接口中的第 2、3 步就是非常典型的关联字段填充操作。
+`listPerson` 接口中的第 2、3 步，就是非常典型的关联字段填充操作。
 
 从某种程度来说，crane4j 可以用于完成一切 “根据 A 的 key 值拿到 B，再把 B 的属性映射到 A” 这类需求。
 
@@ -60,7 +60,7 @@ public class Person {
 }
 ~~~
 
-等到方法调用后，crane4j 将会自动的完成填充，效果与执行之前的代码完全一致。
+等到方法调用后，crane4j 将会自动地完成填充，效果与执行之前的代码完全一致。
 
 ## 3.为什么需要 crane4j？
 

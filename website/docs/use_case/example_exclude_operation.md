@@ -82,7 +82,7 @@ public class Foo {
 
 ## 3.手动排除
 
-除了基于分组和条件填充外，你可以通过编码的方式更灵活的排除一些操作。
+除了基于分组和条件填充外，你可以通过编码的方式更灵活地排除一些操作。
 
 **在代码时排除**
 
@@ -118,7 +118,7 @@ public class Foo implements OperationAwareBean {
     public boolean supportOperation(String key) {
         // 若 id3 为空，则不进行针对 id3 属性的填充
         return !Objects.equals("id3", key) 
-            || Objects.nonNull(this.id3)
+            || Objects.nonNull(this.id3);
     }
 }
 ~~~

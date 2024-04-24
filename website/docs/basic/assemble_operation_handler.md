@@ -69,7 +69,7 @@ public class CustomerVO {
     handlerType = OneToManyAssembleOperationHandler.class,
     props = @Mapping(src = "name", ref = "customerNames"),
     keyType = CustomerQueryDTO.class, // 指定参数对象类型，该类必须有一个公开的无参构造方法
-    keyDesc = "id:prop1, type:prop2", // 指定如何将属性值映射到参数对象
+    keyDesc = "id:prop1, type:prop2" // 指定如何将属性值映射到参数对象
 )
 @Data
 public class CustomerVO {

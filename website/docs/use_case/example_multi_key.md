@@ -47,7 +47,7 @@ public static class DictContainer implements Container<Dict> {
               	// 获取字典对应的 name，并添加到 results 结果集
               	DictVO dict = sources.get(d.getId());
               	results.put(d, dict.getName());
-            })
+            });
         });
       	// 返回的数据集直接以对象为 Key
       	return results;
@@ -77,7 +77,7 @@ public static class DictContainer implements Container<Dict> {
               	// 获取字典对应的 name，并直接设置值
               	DictVO dict = sources.get(d.getId());
               	dict.setName(dict.getName());
-            })
+            });
         });
       	// 因为已经手动设置完值了，所以直接返回一个空集合
       	return Collections.emptyMap();
@@ -151,7 +151,7 @@ public class Dict {
 // 容器提供者
 @Component
 @RequiredArgsConstructor
-public DictContainerProvider implements ContainerProvider {
+public class DictContainerProvider implements ContainerProvider {
   	private final DictService dictService;
     @Nullable
     @Override

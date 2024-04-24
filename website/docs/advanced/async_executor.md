@@ -66,7 +66,7 @@ public List<Foo> getFoo(Integer type) {
 }
 ~~~
 
-在 2.7.0 及以上版本，你也可以直接使用默认提供好的组合注解快捷使用：
+在 2.7.0 及以上版本，你也可以直接使用默认提供的组合注解快捷使用：
 
 ~~~java
 @AsyncAutoOperate(type = Foo.class)

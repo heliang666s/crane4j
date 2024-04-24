@@ -1,6 +1,6 @@
 # MybatisPlus 插件
 
-`crane4j` 提供 `MybatisPlus` 的扩展组件，允许基于 `MybatisPlus` 的 `BaseMapper` 自动构建数据源容器，以便快速的实现查询关联数据并用于填充。
+`crane4j` 提供 `MybatisPlus` 的扩展组件，允许基于 `MybatisPlus` 的 `BaseMapper` 自动构建数据源容器，以便快速地实现查询关联数据并用于填充。
 
 ## 1.安装
 

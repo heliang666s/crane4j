@@ -13,7 +13,7 @@
 当确认上述步骤皆无问题后，你可以尝试在源码中 `cn.crane4j.core.executor.handler.AbstractAssembleOperationHandler` 类的 `doProcess` 方法中添加断点：
 
 + 如果未进入断点，则说明该操作配置未能生效，请重新确认上述原因；
-+ 进入 `collectToEntities`：在这一步，确认你填充的对象是否都已经被收集到，且 key 值被正确的获取；
++ 进入 `collectToEntities`：在这一步，确认你填充的对象是否都已经被收集到，且 key 值被正确地获取；
 + 进入 `getSourcesFromContainer`：在这一步，确认通过上述 key 值能够正确的从数据源获取到数据；
 + 进入 `getTheAssociatedSource`：在这一步，确认待填充的对象可以通过 key 值获得相应的数据源对象；
 + 进入 `completeMapping`：在这一步，确认 crane4j 是否按你的配置正确的将数据源对象的属性值映射到待填充的对象上；
@@ -40,7 +40,7 @@
 
 具体参见 [一对多&多对多](./../basic/assemble_operation_handler.md) 中多对多装配一节。
 
-## 键字段可以是集合或者数组吗？
+## 键字段可以是集合或数组吗？
 
 同上，通过 `@AssembleXXX` 注解中的 `handler` 或 `handlerType` 属性指定装配处理器为一对多装配处理器 `ManyToManyAssembleOperationHandler` 的类型或名称（在 Spring 中即为 bean 名称）即可。
 

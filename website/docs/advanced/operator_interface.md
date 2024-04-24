@@ -204,7 +204,7 @@ public class Example {
         Foo1 foo1 = new Foo1(1);
         Foo2 foo2 = new Foo2(2);
         operator.fill(foo1, foo2); // 填充 foo1 和 foo2
-        return Tuple.of(new)
+        return Tuple.of(new);
     }
 }
 ~~~
@@ -222,12 +222,12 @@ public class Example {
         Foo2 foo2 = new Foo2(2);
         operateTemplate.execute(foo1); // 填充 foo1
         operateTemplate.execute(foo2); // 填充 foo2
-        return Tuple.of(new)
+        return Tuple.of(new);
     }
 }
 ~~~
 
-两者差别不大，不过这种写法可以减少一次类型判断从而轻微的提高性能，并且更容易集中管理配置，你可以根据情况选择。
+两者差别不大，不过这种写法可以减少一次类型判断从而轻微提高性能，并且更容易集中管理配置，你可以根据情况选择。
 
 此外，在这种模式下，将会使用 `@Operator` 注解上的指定的执行器和解析器。
 

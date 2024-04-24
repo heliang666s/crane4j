@@ -66,7 +66,7 @@ public class ServiceImpl { // 你的 service 接口，确保 Spring 可以代理
       	return ids.stream() // 模拟返回数据
           .map(id -> {
             	int genderCode = id % 2; // 随机设置一个性别编码
-            	return new Student().setGenderCode(genderCode)
+            	return new Student().setGenderCode(genderCode);
           })
           .collect(Collectors.toList());
     }
@@ -90,7 +90,7 @@ service.getStudents(Arrays.asList(1, 2));
 
 上述写法被称为选项式，即所有的配置集成在一个注解中，作为不同的选项。
 
-如果你希望数据源与操作的配置分离开，那么你可以先将枚举的数据源配置分离到枚举上：
+如果你希望数据源和操作的配置能够分开，那么你可以先将枚举的数据源配置分离到枚举上：
 
 ~~~java
 @ContainerEnum(

@@ -2,7 +2,7 @@
 
 在 `crane4j` 中，缓存功能由缓存管理器 `CacheManager` 和具体的缓存对象 `Cache` 共同完成。
 
-缓存管理器 `CacheManager` 负责管理缓存对象 `CacheObject` 的创建和销毁，而缓存对象 `CacheObject` 提供对缓存数据的具体的增删改查操作。
+缓存管理器 `CacheManager` 负责管理缓存对象 `CacheObject` 的创建和销毁，而缓存对象 `CacheObject` 提供对缓存数据的具体增删改查操作。
 
 ![缓存结构](https://img.xiajibagao.top/image-20230225011748030.png)
 
@@ -19,7 +19,7 @@
 ~~~java
 @ContainerCache(
     expirationTime = 1000L, // 配置过期时间
-    timeUnit = TimeUnit.SECONDS, // 指定过期时间单位
+    timeUnit = TimeUnit.SECONDS // 指定过期时间单位
 )
 private static class TestContainer implements Container<Object> {
     @Getter
@@ -36,7 +36,7 @@ private static class TestContainer implements Container<Object> {
 ~~~java
 @ContainerCache(
     expirationTime = 1000L, // 配置过期时间
-    timeUnit = TimeUnit.SECONDS, // 指定过期时间单位
+    timeUnit = TimeUnit.SECONDS // 指定过期时间单位
 )
 @ContainerMethod(namespace = "annotatedMethod", resultType = Foo.class)
 public List<Foo> annotatedMethod(List<String> args) {
@@ -59,7 +59,7 @@ public class Configuration {
     
     @ContainerCache(
         expirationTime = 1000L,
-        timeUnit = TimeUnit.SECONDS,
+        timeUnit = TimeUnit.SECONDS
     )
     @Bean
     public Container<String> customContainer() {
@@ -147,7 +147,7 @@ crane4j 默认提供了下述管理器实现，你可以通过 beanName 来引�
 | MapCacheManager               | 基于 Guava 的 MapMaker 实现，不支持设置到期时间，管理器对数据弱引用，不使用时，随 JVM GC 自动回收 | 所有     |
 | SoftConcurrentMapCacheManager | 基于 Spring 的 ConcurrentReferenceHashMap 实现，管理器对数据软引用，不使用时，由 JVM 在任意时刻自动回收 | Spring   |
 
-在 Spring 环境，你还可以通过预置的组合注解方便的使用它们：
+在 Spring 环境，你还可以通过预置的组合注解方便地使用它们：
 
 ~~~java
 @GuavaContainerCache // 指定使用 GuavaCacheManager 作为缓存管理器

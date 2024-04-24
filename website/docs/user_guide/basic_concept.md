@@ -47,7 +47,7 @@ Container<Integer> enumContainer = Containers.forEnum("enum_container", GenderEn
 // 基于函数式接口创建一个容器
 Container<Integer> enumContainer = Containers.forLambda(
     "lambda_container", ids -> ids.stream().collect(Collections.toMap(id -> id, id -> id))
-)
+);
 ~~~
 
 无论如何，在创建完容器后，你需要将其**注册到 crane4j 全局配置类**后才可以使用：
@@ -114,7 +114,7 @@ crane4j 支持通过各种注解快速的配置填充和拆卸操作，它们实
 
 ![BeanOperationExecutor](./image-20230221133602215.png)
 
-当你已经有了操作配置后，你还需要有一个操作执行器 (`BeanOperationExecutor`) ——它依然从全局配置中获取——用来按照操作配置真正的完成填充操作，比如这样：
+当你已经有了操作配置后，你还需要有一个操作执行器 (`BeanOperationExecutor`) ——它依然从全局配置中获取——用来按照操作配置真正地完成填充操作，比如这样：
 
 ~~~java
 // 从全局配置类获取解析器，并解析 Foo 类得到操作配置

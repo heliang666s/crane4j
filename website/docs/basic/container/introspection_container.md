@@ -34,7 +34,7 @@ AssembleKeyAnnotationHandler handler = SpringUtil.getBean(AssembleKeyAnnotationH
 handler.registerValueMapperProvider("phone_number_desensitization", element -> 
 	key -> { // 将手机号中间四位替换为 *
         String phone = (String)key;
-        return phone.substring(0, 3) + "****" + phone.substring(7)
+        return phone.substring(0, 3) + "****" + phone.substring(7);
     }
 );
 ~~~
@@ -84,7 +84,7 @@ handler.registerValueMapperProvider("phone_number_desensitization", element -> {
         if (Objects.nonNull(skip)) {
             phone = phone.substring(skip.value());
         }
-        return phone.substring(0, 3) + "****" + phone.substring(7) // 将手机号中间四位替换为 *
+        return phone.substring(0, 3) + "****" + phone.substring(7); // 将手机号中间四位替换为 *
     }	
 });
 ~~~

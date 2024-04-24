@@ -38,7 +38,7 @@ public class SuperClass {
 @ContainerMethod(
     namespace = "onoToOneMethod",
     resultType = Foo.class, resultKey = "id", // 返回的数据源对象类型为 Foo，并且需要按 id 分组
-    bindMethod = "onoToOneMethod" // 指定要绑定的方法名称
+    bindMethod = "onoToOneMethod", // 指定要绑定的方法名称
     bindMethodParamTypes = List.class // 指定要绑定方法的参数类型
 )
 public class ChildClass extends SuperClass {}
@@ -170,7 +170,7 @@ public List<DictItemQueryDTO> listItemByIdsAndTypes(List<DictItemQueryDTO> dtos)
 ~~~java
 @ContainerCache(
     expirationTime = 1000L, // 配置过期时间
-    timeUnit = TimeUnit.SECONDS, // 指定过期时间单位
+    timeUnit = TimeUnit.SECONDS // 指定过期时间单位
 )
 @ContainerMethod(
     namespace = "onoToOneMethod",
@@ -198,7 +198,7 @@ private BeanMethodContainerRegistrar beanMethodContainerRegistrar;
 
 // 基于 Foo 的实例方法创建方法容器
 Foo foo = new Foo();
-beanMethodContainerRegistrar.register(foo, foo.class);
+beanMethodContainerRegistrar.register(foo, Foo.class);
 ~~~
 
 如果你是在非 Spring 环境中，那么你需要先通过以下代码手动构建 `MethodContainerAnnotationProcessor` 实例，然后再手动注册：

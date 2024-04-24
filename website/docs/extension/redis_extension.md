@@ -35,7 +35,7 @@ public class Crane4jConfig {
     @Bean
     public StringKeyRedisCacheManager<String> cacheManager(StringRedisTemplate template) {
         StringKeyRedisCacheManager cacheManger = new StringKeyRedisCacheManager<>(template);
-        cacheManger.setGlobalPrefix("cranej4:global:key")
+        cacheManger.setGlobalPrefix("cranej4:global:key");
         return cacheManger;
     }
 } 
@@ -53,7 +53,7 @@ public class Crane4jConfig {
         return new GeneralRedisCacheManager<>(
             template, 
             (cacheName, key) -> // 获取缓存 key, 
-            value -> // 获取缓存值
+            value -> value // 获取缓存值
         );
     }
 } 

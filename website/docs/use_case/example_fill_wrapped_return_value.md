@@ -1,6 +1,6 @@
 # 示例：如何填充被包装的返回值
 
-本示例将指导你如何在进行自动填充时，正确的处理被包装的返回值。在这之前，请先确保你已经阅读过[快速开始](./../user_guide/getting_started/getting_started_abstract.md)，并且成功将 crane4j 引入你的项目。
+本示例将指导你如何在进行自动填充时，正确地处理被包装的返回值。在这之前，请先确保你已经阅读过[快速开始](./../user_guide/getting_started/getting_started_abstract.md)，并且成功将 crane4j 引入你的项目。
 
 关于如何配置填充操作的具体内容，请参见：[触发填充操作](./../basic/trigger_operation.md)。
 

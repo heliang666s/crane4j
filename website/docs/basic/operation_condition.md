@@ -119,7 +119,7 @@ public class Foo {
         sort = 0
     )
     @ConditionOnExpression(
-        value = "#target.code % 3 == 0"
+        value = "#target.code % 3 == 0",
         sort = 1
     )
     @ConditionOnExpression(
@@ -153,8 +153,7 @@ public class Foo {
 ~~~java
 @ConditionOnExpression( // 该条件不会生效，因为该注解下面两个操作配置没有被声明在同一个元素上
     id = {"op1", "op2"},
-    value = "#target.name != 'user'",
-    
+    value = "#target.name != 'user'"
 )
 public class Foo {
     
@@ -280,7 +279,7 @@ public interface OperatorInterface {
     
     @ConditionOnTargetType(value = Foo.class) // 仅当填充对象类型为 Foo 及其子类时生效
     @Assemble(container = "foo")
-    void fill(List<Object> targets)
+    void fill(List<Object> targets);
 }
 ~~~
 
@@ -295,7 +294,7 @@ public interface OperatorInterface {
         strict = true
     )
     @Assemble(container = "foo")
-    void fill(List<Object> targets)
+    void fill(List<Object> targets);
 }
 ~~~
 
@@ -371,7 +370,7 @@ public class ConditionOnTargetSerializableParser
             public boolean test(Object target, KeyTriggerOperation operation) {
                 return target instanceof Serializable;
             }
-        }
+        };
     }
 }
 ~~~
