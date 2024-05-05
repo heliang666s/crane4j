@@ -216,7 +216,47 @@ Collection<Container<Object>> containers = processor.process(foo, Foo.getClass()
 containers.forEach(configuration::registerContainer);
 ~~~
 
-## 7.选项式配置
+## 7.包装类提取
+
+有时候，我们会在 `Controller` 中显式的使用通用响应体包装返回值，比如：
+
+~~~java
+@ContainerMethod(resultType = UserVO.class)
+public Result<List<UserVO>> listUser(List<Integer> ids) {
+    // 返回值被通用响应体包装
+}
+
+// 通用响应体
+@AllArgsConstructor
+@Data
+public class Result<T> {
+    private String msg = "ok";
+    private Integer code = 200;
+    private T data;
+    public Result(T data) {
+        this.data = data;
+    }
+}
+~~~
+
+然而，我们真正需要填充的数据其实是 `Result.data`，在 2.8.0 及以上版本，你可以在 `@ContainerMethod` 注解中通过 `on` 属性指定：
+
+~~~java
+@ContainerMethod(resultType = UserVO.class, on = "data")
+public Result<List<UserVO>> listUser(List<Integer> ids) {
+    // 返回值被通用响应体包装
+}
+~~~
+
+![image-20240505121816627](.\image-20240505121816627.png)
+
+:::tip
+
+当对方法返回进行自动填充时，你可以通过类似的方法指定从返回的包装类中获取实际数据，具体可参见：[自动填充](./../trigger_operation.md) 一节中包装类提取部分。
+
+:::
+
+## 8.选项式配置
 
 在 2.2 及以上版本，你可以使用 `@AssembleMethod` 注解进行选项式风格的配置。通过在类或属性上添加 `@AssembleMethod` 注解，并指定要绑定的目标类中的指定方法。
 
