@@ -398,3 +398,30 @@
 
 -   [改为使用 VitePress 作为文档构建框架](https://github.com/opengoofy/crane4j/issues/240)；
 -   [完善文档场景示例](https://github.com/opengoofy/crane4j/issues/231)；
+
+## 2.8.0 (2024-05-07)
+
+这是一个新特性版本，修复了一些问题，优化了一些功能。
+
+具体内容参见：[Milestone](https://github.com/opengoofy/crane4j/milestone/12)。
+
+**Feature**
+
+-   [提供一个操作门面，用于整合组件管理、容器注册、操作执行以及配置管理等功能](https://github.com/opengoofy/crane4j/issues/252)；
+-   [当项目中同上存在复数同名的数据源容器时，应当直接报错或输出警告日志](https://github.com/opengoofy/crane4j/issues/278)；
+-   [@ContainerMethod 支持像 @AutoOperate 那样提取包装对象中的实际数据](https://github.com/opengoofy/crane4j/issues/266)；
+-   [支持在非 Spring 环境下使用自动填充](https://github.com/opengoofy/crane4j/issues/254)；
+-   [提供一个基于 SoftConcurrentMap 实现的缓存管理器](https://github.com/opengoofy/crane4j/issues/251)；
+-   [代理工厂支持基于 ByteBuddy 代理非接口类型](https://github.com/opengoofy/crane4j/issues/253)；
+
+**Fix**
+
+-   [`@ContainerEnumScan` 注解无法支持带有通配符的路径](https://github.com/opengoofy/crane4j/issues/267)；
+-   [添加 `@OperatorScan` 注解后，项目启动时出现 'No servlet set' 问题](https://github.com/opengoofy/crane4j/issues/268)；
+-   [创建容器时可以指定 namespace 为空字符串，但是引用时却无法引用](https://github.com/opengoofy/crane4j/issues/262)；
+-   [自动填充方法参数时，`AutoOperate.resolveOperationsFromCurrentElement `配置不生效](https://github.com/opengoofy/crane4j/issues/258)；
+
+**Refactor**
+
+-   [移除` MappingType.NONE `与 `MappingType.MAPPED` 两个过时的 API](https://github.com/opengoofy/crane4j/issues/272)；
+-   [优化在 spring 环境中组件的初始化时机，避免过早初始化](https://github.com/opengoofy/crane4j/issues/269)；
