@@ -347,6 +347,11 @@ public class Crane4jApplicationContext extends DefaultContainerManager
                 log.info("register property mapping strategy manager [{}]({}) from spring context", beanName, strategy);
                 propertyMappingStrategyManager.addPropertyMappingStrategy(strategy);
             });
+        applicationContext.getBeansOfType(AutoContainerRegistrar.class)
+            .forEach((beanName,registrar) -> {
+                log.info("register auto container registrar [{}] from spring context", beanName);
+                registrar.doRegister(this);
+            });
     }
 
     /**
